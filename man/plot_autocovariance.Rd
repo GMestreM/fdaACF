@@ -28,11 +28,11 @@ sig <- 2
 bbridge <- simulate_iid_brownian_bridge(N, v, sig)
 nlags <- 4
 lagged_autocov <- obtain_autocovariance(Y = bbridge,nlags = nlags)
-set.panel()
-set.panel(1,5)
+opar <- par()
+par(mfrow = c(1,5))
 for(k in 0:nlags){
    plot_autocovariance(lagged_autocov,k)
 }
-set.panel()
+par(opar)
 }
 }
