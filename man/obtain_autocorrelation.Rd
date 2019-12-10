@@ -53,7 +53,7 @@ nlags <- 4
 lagged_autocov <- obtain_autocovariance(Y = bbridge,nlags = nlags)
 lagged_autocor <- obtain_autocorrelation(Y = bbridge,v = v,nlags = nlags)
 
-opar <- par()
+opar <- par(no.readonly = TRUE)
 par(mfrow = c(1,2))
 z_lims <- range(lagged_autocov$Lag1)
 colors <- heat.colors(12)

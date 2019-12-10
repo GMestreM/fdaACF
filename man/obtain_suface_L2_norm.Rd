@@ -36,7 +36,7 @@ Y <- simulate_iid_brownian_bridge(N, v, sig)
 nlags <- 2
 autocovSurface <- obtain_autocovariance(Y=Y,nlags = nlags)
 norms <- obtain_suface_L2_norm(v = v,autocovSurface = autocovSurface)
-opar <- par()
+opar <- par(no.readonly = TRUE)
 par(mfrow = c(1,3))
 plot_autocovariance(fun.autocovariance = autocovSurface,lag = 0)
 title(sub = paste0("Lag ",0," - L2 Norm: ",norms[1]))

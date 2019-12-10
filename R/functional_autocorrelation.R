@@ -142,7 +142,7 @@ obtain_autocovariance <- function(Y,nlags){
   #' lagged_autocov <- obtain_autocovariance(Y = bbridge,nlags = nlags)
   #' z_lims <- range(lagged_autocov$Lag0)
   #' colors <- heat.colors(12)
-  #' opar <- par()
+  #' opar <- par(no.readonly = TRUE)
   #' par(mfrow = c(1,5))
   #' par(oma=c( 0,0,0,6)) # margin of 4 spaces width at right hand side
   #' for(k in 0:nlags){
@@ -214,7 +214,7 @@ obtain_autocorrelation <- function(Y,v = seq(from = 0, to = 1, length.out = ncol
   #' lagged_autocov <- obtain_autocovariance(Y = bbridge,nlags = nlags)
   #' lagged_autocor <- obtain_autocorrelation(Y = bbridge,v = v,nlags = nlags)
   #'
-  #' opar <- par()
+  #' opar <- par(no.readonly = TRUE)
   #' par(mfrow = c(1,2))
   #' z_lims <- range(lagged_autocov$Lag1)
   #' colors <- heat.colors(12)

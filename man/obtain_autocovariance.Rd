@@ -58,7 +58,7 @@ nlags <- 4
 lagged_autocov <- obtain_autocovariance(Y = bbridge,nlags = nlags)
 z_lims <- range(lagged_autocov$Lag0)
 colors <- heat.colors(12)
-opar <- par()
+opar <- par(no.readonly = TRUE)
 par(mfrow = c(1,5))
 par(oma=c( 0,0,0,6)) # margin of 4 spaces width at right hand side
 for(k in 0:nlags){

@@ -20,7 +20,7 @@ plot_autocovariance <- function(fun.autocovariance,lag = 0){
   #' bbridge <- simulate_iid_brownian_bridge(N, v, sig)
   #' nlags <- 4
   #' lagged_autocov <- obtain_autocovariance(Y = bbridge,nlags = nlags)
-  #' opar <- par()
+  #' opar <- par(no.readonly = TRUE)
   #' par(mfrow = c(1,5))
   #' for(k in 0:nlags){
   #'    plot_autocovariance(lagged_autocov,k)
