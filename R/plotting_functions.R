@@ -2,7 +2,7 @@ plot_autocovariance <- function(fun.autocovariance,lag = 0){
 
   #' Generate a 3D plot of the autocovariance surface of a given FTS
   #'
-  #' Obtain a 3D plot of the autocovariance surfaces of a
+  #' @description Obtain a 3D plot of the autocovariance surfaces of a
   #' given functional time series. This visualization is
   #' useful to detec any kind of dependency between
   #' the discretization points of the series.
@@ -27,6 +27,7 @@ plot_autocovariance <- function(fun.autocovariance,lag = 0){
   #' }
   #' par(opar)
   #' }
+  #' @export plot_autocovariance
   # Color palette
   col.pal<-colorRampPalette(c("blue", "red"))
   colors<-col.pal(100)
@@ -39,7 +40,7 @@ plot_autocovariance <- function(fun.autocovariance,lag = 0){
   persp(z,theta = 360-45, phi = 30,
         col=colors[z.facet.range], shade = NA,
         ticktype='detailed',
-        expand = 0.6,
+        expand = 0.7,
         xlab = "u",
         ylab = "v",
         zlab = "",
@@ -52,7 +53,7 @@ plot_autocovariance <- function(fun.autocovariance,lag = 0){
 plot_FACF <- function(rho,Blueline,ci,...){
   #' Plot the autocorrelation function of a given FTS
   #'
-  #' Plot a visual representation of the autocorrelation function
+  #' @description Plot a visual representation of the autocorrelation function
   #' of a given functional time series, including the upper i.i.d.
   #' bound.
   #'
@@ -77,6 +78,7 @@ plot_FACF <- function(rho,Blueline,ci,...){
   #' fACF <- obtain_FACF(Y = bbridge,v = v,nlags = nlags,ci=upper_bound,figure = FALSE)
   #' plot_FACF(rho = fACF$rho,Blueline = fACF$Blueline,ci = upper_bound)
   #' }
+  #' @export plot_FACF
   plot(x = seq(1,length(rho),by = 1),
        y= rho,
        type="h",

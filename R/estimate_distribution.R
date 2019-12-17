@@ -2,7 +2,7 @@ estimate_iid_distr_MC <- function(Y,v,autocovSurface,matindex,nsimul= 10000,figu
 
   #' Estimate distribution of the fACF under the iid. hypothesis using MC method
   #'
-  #' Estimate the distribution of the autocorrelation function
+  #' @description Estimate the distribution of the autocorrelation function
   #' under the hypothesis of strong functional white noise. This
   #' function uses Montecarlo's method to estimate the distribution.
   #'
@@ -52,6 +52,7 @@ estimate_iid_distr_MC <- function(Y,v,autocovSurface,matindex,nsimul= 10000,figu
   #' plot(MC_dist$ex,MC_dist$ef,type = "l",main = "ecdf obtained by MC simulation")
   #' grid()
   #' }
+  #' @export estimate_iid_distr_MC
 
   mat.means <- matrix(rep(colMeans(Y),nrow(Y)),ncol=ncol(Y),byrow = TRUE)
   l <- obtain_autocov_eigenvalues(v,Y - mat.means)
@@ -86,7 +87,7 @@ estimate_iid_distr_Imhof <- function(Y,v,autocovSurface,matindex,figure = FALSE)
 
   #' Estimate distribution of the fACF under the iid. hypothesis using Imhof's method
   #'
-  #' Estimate the distribution of the autocorrelation function
+  #' @description Estimate the distribution of the autocorrelation function
   #' under the hypothesis of strong functional white noise. This
   #' function uses Imhof's method to estimate the distribution.
   #'
@@ -134,6 +135,7 @@ estimate_iid_distr_Imhof <- function(Y,v,autocovSurface,matindex,figure = FALSE)
   #' plot(Imhof_dist$ex,Imhof_dist$ef,type = "l",main = "ecdf obtained by Imhof's method")
   #' grid()
   #' }
+  #' @export estimate_iid_distr_Imhof
 
   mat.means <- matrix(rep(colMeans(Y),nrow(Y)),ncol=ncol(Y),byrow = TRUE)
   l <- obtain_autocov_eigenvalues(v,Y - mat.means)
@@ -179,7 +181,7 @@ obtain_autocov_eigenvalues <- function(v,Y,epsilon = 0.0001){
 
   #' Estimate eigenvalues of the autocovariance function
   #'
-  #' Estimate the eigenvalues of the sample autocovariance
+  #' @description Estimate the eigenvalues of the sample autocovariance
   #' function \eqn{\hat{C}_{0}}. This functions returns the
   #' eigenvalues which are greated than the value \code{epsilon}.
   #'
@@ -204,7 +206,7 @@ obtain_autocov_eigenvalues <- function(v,Y,epsilon = 0.0001){
   #' Y <- simulate_iid_brownian_bridge(N, v, sig)
   #' lambda <- obtain_autocov_eigenvalues(v = v, Y = Y)
   #' }
-  #'
+  #'@export obtain_autocov_eigenvalues
   # Requires package pracma (needs trapz function)
   nt <- nrow(Y)
   nv <- ncol(Y)
@@ -235,7 +237,7 @@ obtain_suface_L2_norm <- function(v,autocovSurface){
 
   #' Obtain L2 norm of the autocovariance functions
   #'
-  #' Returns the L2 norm of the lagged autocovariance
+  #' @description Returns the L2 norm of the lagged autocovariance
   #' functions \eqn{\hat{C}_{h}}. The L2 norm of these
   #' functions is defined as
   #' \deqn{\sqrt(\int \int \hat{C}^{2}_{h}(u,v)du dv)}
@@ -269,6 +271,7 @@ obtain_suface_L2_norm <- function(v,autocovSurface){
   #' title(sub = paste0("Lag ",2," - L2 Norm: ",norms[3]))
   #' par(opar)
   #' }
+  #' @export obtain_suface_L2_norm
   repsize <- length(autocovSurface)
   matindex <- rep(NA,repsize)
 

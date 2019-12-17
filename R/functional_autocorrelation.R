@@ -2,7 +2,7 @@ obtain_FACF <- function(Y,v,nlags,ci=0.95,estimation = "MC",figure = TRUE){
 
   #' Obtain the autocorrelation function for a given functional time series.
   #'
-  #' Estimate the lagged autocorrelation function for a given
+  #' @description Estimate the lagged autocorrelation function for a given
   #' functional time series and its distribution under the
   #' hypothesis of strong functional white noise. This graphic tool
   #' can be used to identify seasonal patterns in the functional
@@ -51,6 +51,7 @@ obtain_FACF <- function(Y,v,nlags,ci=0.95,estimation = "MC",figure = TRUE){
   #' Y <- simulate_iid_brownian_bridge(N, v, sig)
   #' obtain_FACF(Y,v,30)
   #' }
+  #' @export obtain_FACF
 
 
   # Obtain autocovariance surfaces
@@ -96,7 +97,7 @@ obtain_autocovariance <- function(Y,nlags){
 
   #' Estimate the autocovariance function of the series
   #'
-  #' Obtain the empirical autocovariance function for
+  #' @description Obtain the empirical autocovariance function for
   #' lags \eqn{= 0,...,}\code{nlags} of the functional time
   #' series. Given \eqn{Y_{1},...,Y_{T}} a functional time
   #' series, the sample autocovariance functions
@@ -152,6 +153,7 @@ obtain_autocovariance <- function(Y,nlags){
   #' image.plot( legend.only=TRUE, legend.width = 2,zlim=z_lims, col = colors)
   #' par(opar)
   #' }
+  #' @export obtain_autocovariance
 
   nt <- nrow(Y)
   nv <- ncol(Y)
@@ -175,7 +177,7 @@ obtain_autocorrelation <- function(Y,v = seq(from = 0, to = 1, length.out = ncol
 
   #' Estimate the autocorrelation function of the series
   #'
-  #' Obtain the empirical autocorrelation function for
+  #' @description Obtain the empirical autocorrelation function for
   #' lags \eqn{= 0,...,}\code{nlags} of the functional time
   #' series. Given \eqn{Y_{1},...,Y_{T}} a functional time
   #' series, the sample autocovariance functions
@@ -223,6 +225,7 @@ obtain_autocorrelation <- function(Y,v = seq(from = 0, to = 1, length.out = ncol
   #' image.plot(x = v, y = v , z = lagged_autocor$Lag1, legend.width = 2,zlim=z_lims, col = colors, xlab = "u", ylab = "v", main = "Autocorrelation")
   #' par(opar)
   #' }
+  #' @export obtain_autocorrelation
 
   fun.autocovariance <- obtain_autocovariance(Y,nlags)
   normalization.value <- pracma::trapz(v,diag(fun.autocovariance$Lag0))

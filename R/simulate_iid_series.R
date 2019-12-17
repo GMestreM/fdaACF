@@ -2,7 +2,7 @@ simulate_iid_brownian_motion <- function(N, v = seq(from = 0, to = 1, length.out
 
   #' Simulate a FTS from a brownian motion process
   #'
-  #' Generate a functional time series from a Brownian Motion process.
+  #' @description Generate a functional time series from a Brownian Motion process.
   #' Each functional observation is discretized in the points
   #' indicated in \code{v}. The series obtained is i.i.d.
   #' and does not exhibit any kind of serial correlation
@@ -21,6 +21,7 @@ simulate_iid_brownian_motion <- function(N, v = seq(from = 0, to = 1, length.out
   #' bmotion <- simulate_iid_brownian_motion(N, v, sig)
   #' matplot(v,t(bmotion), type = "l", xlab = "v", ylab = "Value")
   #' }
+  #' @export simulate_iid_brownian_motion
   dv <- length(v)
 
   # Initialize
@@ -34,7 +35,7 @@ simulate_iid_brownian_bridge <- function(N, v = seq(from = 0, to = 1, length.out
 
   #' Simulate a FTS from a brownian bridge process
   #'
-  #' Generate a functional time series from a Brownian Bridge process.
+  #' @description Generate a functional time series from a Brownian Bridge process.
   #' If \eqn{W(t)} is a Wiener process, the Brownian Bridge is
   #' defined as \eqn{W(t) - tW(1)}.
   #' Each functional observation is discretized in the points
@@ -54,7 +55,8 @@ simulate_iid_brownian_bridge <- function(N, v = seq(from = 0, to = 1, length.out
   #' sig <- 2
   #' bbridge <- simulate_iid_brownian_bridge(N, v, sig)
   #' matplot(v,t(bbridge), type = "l", xlab = "v", ylab = "Value")
-  #' }
+  #' } 
+  #' @export simulate_iid_brownian_bridge
   dv <- length(v)
 
   # Initialize
