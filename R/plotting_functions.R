@@ -1,4 +1,4 @@
-plot_autocovariance <- function(fun.autocovariance,lag = 0){
+plot_autocovariance <- function(fun.autocovariance,lag = 0,...){
 
   #' Generate a 3D plot of the autocovariance surface of a given FTS
   #'
@@ -12,6 +12,8 @@ plot_autocovariance <- function(fun.autocovariance,lag = 0){
   #' @param lag An integer between 0 and \code{nlags}, indicating
   #' the lagged autocovariance function to be plotted.
   #' By default 0.
+  #' @param ... Further arguments passed to the  \code{persp}
+  #' function.
   #' @examples
   #' \dontrun{
   #' N <- 500
@@ -37,14 +39,22 @@ plot_autocovariance <- function(fun.autocovariance,lag = 0){
   z.facet.center <- (z[-1, -1] + z[-1, -ncol(z)] + z[-nrow(z), -1] + z[-nrow(z), -ncol(z)])/4
   z.facet.range<-cut(z.facet.center, 100)
 
-  persp(z,theta = 360-45, phi = 30,
-        col=colors[z.facet.range], shade = NA,
-        ticktype='detailed',
-        expand = 0.7,
-        xlab = "u",
-        ylab = "v",
-        zlab = "",
-        main = paste("Lag",lag,sep=" "))
+  # Check if any additional plotting parameters are present
+  arguments <- list(...)
+  if(!"xlab" %in% names(arguments))     arguments$xlab <- "u"
+  if(!"ylab" %in% names(arguments))     arguments$ylab <- "v"
+  if(!"zlab" %in% names(arguments))     arguments$zlab <- ""
+  if(!"main" %in% names(arguments))     arguments$main  <- paste("Lag",lag,sep=" ")
+  if(!"expand" %in% names(arguments))   arguments$expand  <- 0.7
+  if(!"ticktype" %in% names(arguments)) arguments$ticktype  <-'detailed'
+  if(!"shade" %in% names(arguments))    arguments$shade  <- NA
+  if(!"col" %in% names(arguments))      arguments$col <- colors[z.facet.range]
+  if(!"theta" %in% names(arguments))    arguments$theta  <- 315
+  if(!"phi" %in% names(arguments))      arguments$phi  <- 30
+  arguments$z = z
+
+  do.call(persp,arguments)
+
 }
 
 
@@ -67,6 +77,8 @@ plot_FACF <- function(rho,Blueline,ci,...){
   #' when calling the function \code{obtain_FACF}.
   #' This value is only used to display information
   #' in the figure.
+  #' @param ... Further arguments passed to the  \code{plot}
+  #' function.
   #' @examples
   #' \dontrun{
   #' N <- 200
@@ -79,13 +91,19 @@ plot_FACF <- function(rho,Blueline,ci,...){
   #' plot_FACF(rho = fACF$rho,Blueline = fACF$Blueline,ci = upper_bound)
   #' }
   #' @export plot_FACF
-  plot(x = seq(1,length(rho),by = 1),
-       y= rho,
-       type="h",
-       lwd = 2,
-       xlab = "Lag",
-       ylab = "Autocorrelation",
-       ylim = c(0,max(rho)*1.5),...)
+  # Check if any additional plotting parameters are present
+  arguments <- list(...)
+  if(!"xlab" %in% names(arguments))  arguments$xlab <- "Lag"
+  if(!"ylab" %in% names(arguments))  arguments$ylab <- "Autocorrelation"
+  if(!"ylim" %in% names(arguments))  arguments$ylim <- c(0,max(rho)*1.5)
+  if(!"lwd"  %in% names(arguments))   arguments$lwd  <- 2
+  if(!"main" %in% names(arguments))  arguments$main  <- ""
+  if(!"xlim" %in% names(arguments))  arguments$xlim  <- c(0,length(rho))
+  arguments$x = seq(1,length(rho),by = 1)
+  arguments$y = rho
+  arguments$type = "h"
+  
+  do.call(plot,arguments)
   abline(h = Blueline,col = "blue",lwd = 2, lty = 2)
   legend(x = "topleft",
          legend = c(paste("i.i.d. bound (",ci*100," % conf.)",sep="")),

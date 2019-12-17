@@ -1,4 +1,4 @@
-estimate_iid_distr_MC <- function(Y,v,autocovSurface,matindex,nsimul= 10000,figure = FALSE){
+estimate_iid_distr_MC <- function(Y,v,autocovSurface,matindex,nsimul= 10000,figure = FALSE, ...){
 
   #' Estimate distribution of the fACF under the iid. hypothesis using MC method
   #'
@@ -29,6 +29,8 @@ estimate_iid_distr_MC <- function(Y,v,autocovSurface,matindex,nsimul= 10000,figu
   #' By default, \code{nsimul = 10000}.
   #' @param figure Logical. If \code{TRUE}, plots the
   #' estimated distribution.
+  #' @param ... Further arguments passed to the  \code{plot}
+  #' function.
   #' @return Return a list with:
   #' \itemize{
   #'     \item \code{ex}: Knots where the
@@ -44,6 +46,7 @@ estimate_iid_distr_MC <- function(Y,v,autocovSurface,matindex,nsimul= 10000,figu
   #' v <- seq(from = 0, to = 1, length.out = 50)
   #' sig <- 2
   #' Y <- simulate_iid_brownian_bridge(N, v, sig)
+  #' nlags <- 20
   #' autocovSurface <- obtain_autocovariance(Y,nlags)
   #' matindex <- obtain_suface_L2_norm (v,autocovSurface)
   #' # Remove lag 0
@@ -72,7 +75,13 @@ estimate_iid_distr_MC <- function(Y,v,autocovSurface,matindex,nsimul= 10000,figu
   ex <- knots(ecdf.aux)
   ef <- ecdf.aux(ex)
   if(figure){
-    plot(ex,ef,type = "l",main = "ecdf obtained by MC simulation")
+    # Check if any additional plotting parameters are present
+    arguments <- list(...)
+    if("main" %in% names(arguments)){
+      plot(ex,ef,type = "l",...)
+    }else{
+      plot(ex,ef,type = "l",main = "ecdf obtained by MC simulation",...)
+    }
     grid()
   }
   iid.distribution <- list()
@@ -83,7 +92,7 @@ estimate_iid_distr_MC <- function(Y,v,autocovSurface,matindex,nsimul= 10000,figu
 }
 
 
-estimate_iid_distr_Imhof <- function(Y,v,autocovSurface,matindex,figure = FALSE){
+estimate_iid_distr_Imhof <- function(Y,v,autocovSurface,matindex,figure = FALSE,...){
 
   #' Estimate distribution of the fACF under the iid. hypothesis using Imhof's method
   #'
@@ -114,6 +123,8 @@ estimate_iid_distr_Imhof <- function(Y,v,autocovSurface,matindex,figure = FALSE)
   #' By default, \code{nsimul = 10000}.
   #' @param figure Logical. If \code{TRUE}, plots the
   #' estimated distribution.
+  #' @param ... Further arguments passed to the  \code{plot}
+  #' function.
   #' @return Return a list with:
   #' \itemize{
   #'     \item \code{ex}: Knots where the
@@ -165,7 +176,13 @@ estimate_iid_distr_Imhof <- function(Y,v,autocovSurface,matindex,figure = FALSE)
   ex <- w
   ef <- t(cdf)
   if(figure){
-    plot(ex,ef,type = "l",main = "ecdf obtained by Imhof estimation")
+    # Check if any additional plotting parameters are present
+    arguments <- list(...)
+    if("main" %in% names(arguments)){
+      plot(ex,ef,type = "l",...)
+    }else{
+      plot(ex,ef,type = "l",main = "ecdf obtained by Imhof estimation")
+    }
     grid()
   }
   iid.distribution <- list()

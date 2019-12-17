@@ -1,4 +1,4 @@
-obtain_FACF <- function(Y,v,nlags,ci=0.95,estimation = "MC",figure = TRUE){
+obtain_FACF <- function(Y,v,nlags,ci=0.95,estimation = "MC",figure = TRUE,...){
 
   #' Obtain the autocorrelation function for a given functional time series.
   #'
@@ -36,6 +36,8 @@ obtain_FACF <- function(Y,v,nlags,ci=0.95,estimation = "MC",figure = TRUE){
   #' @param figure Logical. If \code{TRUE}, plots the
   #' estimated autocorrelation function with the
   #' specified i.i.d. bound.
+  #' @param ... Further arguments passed to the \code{plot_FACF}
+  #' function.
   #' @return Return a list with:
   #' \itemize{
   #'     \item \code{Blueline}: The upper prediction
@@ -81,7 +83,7 @@ obtain_FACF <- function(Y,v,nlags,ci=0.95,estimation = "MC",figure = TRUE){
   }
 
   if(figure){
-    plot_FACF(rho,Blueline,ci)
+    plot_FACF(rho,Blueline,ci,...)
   }
 
 
