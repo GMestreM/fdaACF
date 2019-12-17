@@ -4,7 +4,7 @@
 \alias{obtain_FACF}
 \title{Obtain the autocorrelation function for a given functional time series.}
 \usage{
-obtain_FACF(Y, v, nlags, ci = 0.95, estimation = "MC", figure = TRUE)
+obtain_FACF(Y, v, nlags, ci = 0.95, estimation = "MC", figure = TRUE, ...)
 }
 \arguments{
 \item{Y}{Matrix containing the discretized values
@@ -38,6 +38,9 @@ By default, \code{estimation = "MC"}.}
 \item{figure}{Logical. If \code{TRUE}, plots the
 estimated autocorrelation function with the
 specified i.i.d. bound.}
+
+\item{...}{Further arguments passed to the \code{plot_FACF}
+function.}
 }
 \value{
 Return a list with:

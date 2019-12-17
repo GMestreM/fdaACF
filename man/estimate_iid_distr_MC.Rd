@@ -10,7 +10,8 @@ estimate_iid_distr_MC(
   autocovSurface,
   matindex,
   nsimul = 10000,
-  figure = FALSE
+  figure = FALSE,
+  ...
 )
 }
 \arguments{
@@ -42,6 +43,9 @@ By default, \code{nsimul = 10000}.}
 
 \item{figure}{Logical. If \code{TRUE}, plots the
 estimated distribution.}
+
+\item{...}{Further arguments passed to the  \code{plot}
+function.}
 }
 \value{
 Return a list with:
@@ -65,6 +69,7 @@ N <- 400
 v <- seq(from = 0, to = 1, length.out = 50)
 sig <- 2
 Y <- simulate_iid_brownian_bridge(N, v, sig)
+nlags <- 20
 autocovSurface <- obtain_autocovariance(Y,nlags)
 matindex <- obtain_suface_L2_norm (v,autocovSurface)
 # Remove lag 0

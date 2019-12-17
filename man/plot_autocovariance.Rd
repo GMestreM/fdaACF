@@ -4,7 +4,7 @@
 \alias{plot_autocovariance}
 \title{Generate a 3D plot of the autocovariance surface of a given FTS}
 \usage{
-plot_autocovariance(fun.autocovariance, lag = 0)
+plot_autocovariance(fun.autocovariance, lag = 0, ...)
 }
 \arguments{
 \item{fun.autocovariance}{A list obtained by
@@ -13,6 +13,9 @@ calling the function \code{obtain_autocovariance}.}
 \item{lag}{An integer between 0 and \code{nlags}, indicating
 the lagged autocovariance function to be plotted.
 By default 0.}
+
+\item{...}{Further arguments passed to the  \code{persp}
+function.}
 }
 \description{
 Obtain a 3D plot of the autocovariance surfaces of a

@@ -19,6 +19,9 @@ function \code{obtain_FACF}.}
 when calling the function \code{obtain_FACF}.
 This value is only used to display information
 in the figure.}
+
+\item{...}{Further arguments passed to the  \code{plot}
+function.}
 }
 \description{
 Plot a visual representation of the autocorrelation function

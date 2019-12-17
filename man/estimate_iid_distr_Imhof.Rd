@@ -4,7 +4,7 @@
 \alias{estimate_iid_distr_Imhof}
 \title{Estimate distribution of the fACF under the iid. hypothesis using Imhof's method}
 \usage{
-estimate_iid_distr_Imhof(Y, v, autocovSurface, matindex, figure = FALSE)
+estimate_iid_distr_Imhof(Y, v, autocovSurface, matindex, figure = FALSE, ...)
 }
 \arguments{
 \item{Y}{Matrix containing the discretized values
@@ -28,6 +28,9 @@ function \code{obtain_suface_L2_norm}.}
 
 \item{figure}{Logical. If \code{TRUE}, plots the
 estimated distribution.}
+
+\item{...}{Further arguments passed to the  \code{plot}
+function.}
 
 \item{nsimul}{Positive integer indicating the number of
 MC simulations that will be used to estimate the distribution
