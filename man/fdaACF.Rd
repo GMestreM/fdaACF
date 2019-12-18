@@ -3,7 +3,6 @@
 \docType{package}
 \name{fdaACF}
 \alias{fdaACF}
-\alias{fdaACF-package}
 \title{fdaACF: Autocorrelation function for Functional Time Series}
 \description{
 The fdaACF package provides diagnostic and analysis tools

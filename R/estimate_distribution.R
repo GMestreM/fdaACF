@@ -66,23 +66,23 @@ estimate_iid_distr_MC <- function(Y,v,autocovSurface,matindex,nsimul= 10000,figu
 
   for(jj in 1:neig){
     for(kk in 1:neig){
-      Reig <- Reig + rchisq(n = nsimul,df = 1)*l[jj]*l[kk]
+      Reig <- Reig + stats::rchisq(n = nsimul,df = 1)*l[jj]*l[kk]
     }
   }
   Reig=Reig/nrow(Y)
 
-  ecdf.aux <- ecdf(Reig)
-  ex <- knots(ecdf.aux)
+  ecdf.aux <- stats::ecdf(Reig)
+  ex <- stats::knots(ecdf.aux)
   ef <- ecdf.aux(ex)
   if(figure){
     # Check if any additional plotting parameters are present
     arguments <- list(...)
     if("main" %in% names(arguments)){
-      plot(ex,ef,type = "l",...)
+      graphics::plot(ex,ef,type = "l",...)
     }else{
-      plot(ex,ef,type = "l",main = "ecdf obtained by MC simulation",...)
+      graphics::plot(ex,ef,type = "l",main = "ecdf obtained by MC simulation",...)
     }
-    grid()
+    graphics::grid()
   }
   iid.distribution <- list()
   iid.distribution$ex <- ex
@@ -115,12 +115,6 @@ estimate_iid_distr_Imhof <- function(Y,v,autocovSurface,matindex,figure = FALSE,
   #' @param matindex A vector containing the L2 norm of
   #' the autocovariance function. It can be obtained by calling
   #' function \code{obtain_suface_L2_norm}.
-  #' @param nsimul Positive integer indicating the number of
-  #' MC simulations that will be used to estimate the distribution
-  #' of the statistic. Increasing the number of simulations will
-  #' imrpove the estimation, but it will increase the computational
-  #' time.
-  #' By default, \code{nsimul = 10000}.
   #' @param figure Logical. If \code{TRUE}, plots the
   #' estimated distribution.
   #' @param ... Further arguments passed to the  \code{plot}
@@ -179,11 +173,11 @@ estimate_iid_distr_Imhof <- function(Y,v,autocovSurface,matindex,figure = FALSE,
     # Check if any additional plotting parameters are present
     arguments <- list(...)
     if("main" %in% names(arguments)){
-      plot(ex,ef,type = "l",...)
+      graphics::plot(ex,ef,type = "l",...)
     }else{
-      plot(ex,ef,type = "l",main = "ecdf obtained by Imhof estimation")
+      graphics::plot(ex,ef,type = "l",main = "ecdf obtained by Imhof estimation")
     }
-    grid()
+    graphics::grid()
   }
   iid.distribution <- list()
   iid.distribution$ex <- ex

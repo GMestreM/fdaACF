@@ -4,8 +4,11 @@
 \alias{simulate_iid_brownian_motion}
 \title{Simulate a FTS from a brownian motion process}
 \usage{
-simulate_iid_brownian_motion(N, v = seq(from = 0, to = 1, length.out =
-  100), sig = 1)
+simulate_iid_brownian_motion(
+  N,
+  v = seq(from = 0, to = 1, length.out = 100),
+  sig = 1
+)
 }
 \arguments{
 \item{N}{The number of observations of the simulated data.}

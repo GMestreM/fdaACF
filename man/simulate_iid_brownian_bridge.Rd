@@ -4,8 +4,11 @@
 \alias{simulate_iid_brownian_bridge}
 \title{Simulate a FTS from a brownian bridge process}
 \usage{
-simulate_iid_brownian_bridge(N, v = seq(from = 0, to = 1, length.out =
-  100), sig = 1)
+simulate_iid_brownian_bridge(
+  N,
+  v = seq(from = 0, to = 1, length.out = 100),
+  sig = 1
+)
 }
 \arguments{
 \item{N}{The number of observations of the simulated data.}

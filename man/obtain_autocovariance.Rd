@@ -43,7 +43,8 @@ v <- seq(from = 0, to = 1, length.out = 50)
 sig <- 2
 bbridge <- simulate_iid_brownian_bridge(N, v, sig)
 nlags <- 10
-lagged_autocov <- obtain_autocovariance(Y = bbridge,nlags = nlags)
+lagged_autocov <- obtain_autocovariance(Y = bbridge,
+                                        nlags = nlags)
 image(x = v, y = v, z = lagged_autocov$Lag0)
 image(x = v, y = v, z = lagged_autocov$Lag10)
 
@@ -55,14 +56,21 @@ v <- seq(from = 0, to = 1, length.out = 50)
 sig <- 2
 bbridge <- simulate_iid_brownian_bridge(N, v, sig)
 nlags <- 4
-lagged_autocov <- obtain_autocovariance(Y = bbridge,nlags = nlags)
+lagged_autocov <- obtain_autocovariance(Y = bbridge,
+                                        nlags = nlags)
 z_lims <- range(lagged_autocov$Lag0)
 colors <- heat.colors(12)
 opar <- par(no.readonly = TRUE)
 par(mfrow = c(1,5))
-par(oma=c( 0,0,0,6)) # margin of 4 spaces width at right hand side
+par(oma=c( 0,0,0,6)) 
 for(k in 0:nlags){
-   image(x=v,y=v,z = lagged_autocov[[paste0("Lag",k)]],main = paste("Lag",k), col = colors,xlab = "u", ylab = "v")
+   image(x=v,
+         y=v,
+         z = lagged_autocov[[paste0("Lag",k)]],
+         main = paste("Lag",k),
+         col = colors,
+         xlab = "u",
+         ylab = "v")
 }
 par(oma=c( 0,0,0,2.5)) # reset margin to be much smaller.
 image.plot( legend.only=TRUE, legend.width = 2,zlim=z_lims, col = colors)

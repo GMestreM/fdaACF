@@ -31,13 +31,6 @@ estimated distribution.}
 
 \item{...}{Further arguments passed to the  \code{plot}
 function.}
-
-\item{nsimul}{Positive integer indicating the number of
-MC simulations that will be used to estimate the distribution
-of the statistic. Increasing the number of simulations will
-imrpove the estimation, but it will increase the computational
-time.
-By default, \code{nsimul = 10000}.}
 }
 \value{
 Return a list with:

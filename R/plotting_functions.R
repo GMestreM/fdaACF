@@ -31,7 +31,7 @@ plot_autocovariance <- function(fun.autocovariance,lag = 0,...){
   #' }
   #' @export plot_autocovariance
   # Color palette
-  col.pal<-colorRampPalette(c("blue", "red"))
+  col.pal<-grDevices::colorRampPalette(c("blue", "red"))
   colors<-col.pal(100)
 
   # Select the lagged autocovariance surface
@@ -53,7 +53,7 @@ plot_autocovariance <- function(fun.autocovariance,lag = 0,...){
   if(!"phi" %in% names(arguments))      arguments$phi  <- 30
   arguments$z = z
 
-  do.call(persp,arguments)
+  do.call(graphics::persp,arguments)
 
 }
 
@@ -103,11 +103,11 @@ plot_FACF <- function(rho,Blueline,ci,...){
   arguments$y = rho
   arguments$type = "h"
   
-  do.call(plot,arguments)
-  abline(h = Blueline,col = "blue",lwd = 2, lty = 2)
-  legend(x = "topleft",
-         legend = c(paste("i.i.d. bound (",ci*100," % conf.)",sep="")),
-         col = "blue",
-         lty = 2,
-         lwd = 2)
+  do.call(graphics::plot,arguments)
+  graphics::abline(h = Blueline,col = "blue",lwd = 2, lty = 2)
+  graphics::legend(x = "topleft",
+                   legend = c(paste("i.i.d. bound (",ci*100," % conf.)",sep="")),
+                   col = "blue",
+                   lty = 2,
+                   lwd = 2)
 }

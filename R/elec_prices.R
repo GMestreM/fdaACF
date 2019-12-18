@@ -8,7 +8,28 @@
 #' \describe{
 #'   \item{H1}{Electricity price for hour 1}
 #'   \item{H2}{Electricity price for hour 2}
-#'   ...
+#'   \item{H3}{Electricity price for hour 3}
+#'   \item{H4}{Electricity price for hour 4}
+#'   \item{H5}{Electricity price for hour 5}
+#'   \item{H6}{Electricity price for hour 6}
+#'   \item{H7}{Electricity price for hour 7}
+#'   \item{H8}{Electricity price for hour 8}
+#'   \item{H9}{Electricity price for hour 9}
+#'   \item{H10}{Electricity price for hour 10}
+#'   \item{H11}{Electricity price for hour 11}
+#'   \item{H12}{Electricity price for hour 12}
+#'   \item{H13}{Electricity price for hour 13}
+#'   \item{H14}{Electricity price for hour 14}
+#'   \item{H15}{Electricity price for hour 15}
+#'   \item{H16}{Electricity price for hour 16}
+#'   \item{H17}{Electricity price for hour 17}
+#'   \item{H18}{Electricity price for hour 18}
+#'   \item{H19}{Electricity price for hour 19}
+#'   \item{H20}{Electricity price for hour 20}
+#'   \item{H21}{Electricity price for hour 21}
+#'   \item{H22}{Electricity price for hour 22}
+#'   \item{H23}{Electricity price for hour 23}
+#'   \item{H24}{Electricity price for hour 24}
 #' }
 #' @source \url{https://www.esios.ree.es/es/analisis/600}
 "elec_prices"

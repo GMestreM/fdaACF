@@ -26,7 +26,7 @@ simulate_iid_brownian_motion <- function(N, v = seq(from = 0, to = 1, length.out
 
   # Initialize
   b_motion <- matrix(0, ncol = dv, nrow = N)
-  b_motion[,2:dv] <- t(apply(matrix(rnorm( (dv-1) *N, sd = sig), ncol = dv-1, nrow = N), 1, cumsum))
+  b_motion[,2:dv] <- t(apply(matrix(stats::rnorm( (dv-1) *N, sd = sig), ncol = dv-1, nrow = N), 1, cumsum))
 
   return(b_motion)
 }
