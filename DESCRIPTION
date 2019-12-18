@@ -27,9 +27,9 @@ Authors@R: c(
     person(given = "José", family = "Portela González", 
       email = "Jose.Portela@iit.comillas.edu", role = "aut"),
 	person(given = "Antonio", family = "Muñoz San Roque", 
-      email = "antonio.munoz@iit.comillas.edu", role = "cbt"),
+      email = "antonio.munoz@iit.comillas.edu", role = "ctb"),
 	person(given = "Estrella", family = "Alonso Pérez", 
-      email = "ealonso@icai.comillas.edu", role = "cbt")
+      email = "ealonso@icai.comillas.edu", role = "ctb")
     )
 RoxygenNote: 7.0.1
 Suggests: 
