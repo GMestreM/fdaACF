@@ -1,6 +1,10 @@
 # fdaACF
 Autocorrelation Function for Functional Time Series
 
+<!-- badges: start -->
+  [![Travis build status](https://travis-ci.org/GMestreM/fdaACF.svg?branch=master)](https://travis-ci.org/GMestreM/fdaACF)
+  <!-- badges: end -->
+
 This is the development repository for the fdaACF package. Functions within this package can be used for quantifying the serial correlation across lags of a given functional time series.
 
 ### License
