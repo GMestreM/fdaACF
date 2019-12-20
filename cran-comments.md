@@ -2,6 +2,7 @@
 
 ## Test environments
 * Windows 10 Home x64, R 3.6.1
+* macOS Mojave 10.14.6, R 3.5.1
 
 ### R CMD check
 
