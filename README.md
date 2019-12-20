@@ -107,6 +107,26 @@ par(mfrow = c(1,1))
 ![](README-files/figure-html/autocov_surfc.png)<!-- -->
 
 
+As illustrated by the previous image, the L2 norm of these covariance surfaces is close to 0. This can be easily checked by obtaining the ACF function of these data.
+
+
+```r
+# Autocorrelation function for functional data
+FACF_iid <- obtain_FACF(Y = Y, 
+                        v = v,
+                        nlags = 30,
+                        ci = ci,
+                        figure = TRUE)
+```
+
+
+![](README-files/figure-html/FACF_iid.png)<!-- -->
+
+
+
+As all the autocorrelation values fall below the i.i.d. bound, the i.i.d. hypothesis cannot be rejected.
+
+
 ### License
 
 This package is released in the public domain under the General Public License [GPL](https://www.gnu.org/licenses/gpl-3.0.en.html). 
