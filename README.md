@@ -48,7 +48,7 @@ matplot(t(elec_prices), type = "l",lty = 1,xlab = "Hours", ylab = "Price (€/MW
 ![](README-files/figure-html/elec_prices.png)<!-- -->
 
 
-The `obtain_FACF` function estimates the lagged autocorrelation function for a given functional time series and its distribution under the hypothesis of strong functional white noise. The visual representation of the lagged ACF can be used to identify seasonal patterns in the functional data as well as auto-regressive or moving average terms. In addittion, i.i.d. bounds are included to test the presence of serial correlation in the data.
+The `obtain_FACF` function estimates the lagged autocorrelation function for a given functional time series and its distribution under the hypothesis of strong functional white noise. The visual representation of the lagged ACF can be used to identify seasonal patterns in the functional data as well as auto-regressive or moving average terms. In addition, i.i.d. bounds are included to test the presence of serial correlation in the data.
 
 
 ```r

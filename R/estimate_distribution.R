@@ -24,7 +24,7 @@ estimate_iid_distr_MC <- function(Y,v,autocovSurface,matindex,nsimul= 10000,figu
   #' @param nsimul Positive integer indicating the number of
   #' MC simulations that will be used to estimate the distribution
   #' of the statistic. Increasing the number of simulations will
-  #' imrpove the estimation, but it will increase the computational
+  #' improve the estimation, but it will increase the computational
   #' time.
   #' By default, \code{nsimul = 10000}.
   #' @param figure Logical. If \code{TRUE}, plots the
@@ -194,7 +194,7 @@ obtain_autocov_eigenvalues <- function(v,Y,epsilon = 0.0001){
   #'
   #' @description Estimate the eigenvalues of the sample autocovariance
   #' function \eqn{\hat{C}_{0}}. This functions returns the
-  #' eigenvalues which are greated than the value \code{epsilon}.
+  #' eigenvalues which are greater than the value \code{epsilon}.
   #'
   #' @param v Discretization points of the curves, by default
   #' \code{seq(from = 0, to = 1, length.out = 100)}.

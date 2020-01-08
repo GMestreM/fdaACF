@@ -27,7 +27,7 @@ of the autocorrelation function. By default
 
 \item{estimation}{Character specifying the
 method to be used when estimating the distribution
-under the hipothesis of functional white noise.
+under the hypothesis of functional white noise.
 Accepted values are:
 \itemize{
    \item "MC": Monte-Carlo estimation.

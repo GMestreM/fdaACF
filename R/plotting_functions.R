@@ -4,7 +4,7 @@ plot_autocovariance <- function(fun.autocovariance,lag = 0,...){
   #'
   #' @description Obtain a 3D plot of the autocovariance surfaces of a
   #' given functional time series. This visualization is
-  #' useful to detec any kind of dependency between
+  #' useful to detect any kind of dependency between
   #' the discretization points of the series.
   #'
   #' @param fun.autocovariance A list obtained by

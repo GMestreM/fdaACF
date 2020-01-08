@@ -28,7 +28,7 @@ greater than \code{epsilon}.
 \description{
 Estimate the eigenvalues of the sample autocovariance
 function \eqn{\hat{C}_{0}}. This functions returns the
-eigenvalues which are greated than the value \code{epsilon}.
+eigenvalues which are greater than the value \code{epsilon}.
 }
 \examples{
 \dontrun{

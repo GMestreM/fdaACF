@@ -26,7 +26,7 @@ obtain_FACF <- function(Y,v,nlags,ci=0.95,estimation = "MC",figure = TRUE,...){
   #' \code{ci = 0.95}.
   #' @param estimation Character specifying the
   #' method to be used when estimating the distribution
-  #' under the hipothesis of functional white noise.
+  #' under the hypothesis of functional white noise.
   #' Accepted values are:
   #' \itemize{
   #'    \item "MC": Monte-Carlo estimation.

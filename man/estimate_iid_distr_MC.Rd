@@ -30,7 +30,7 @@ function \code{obtain_suface_L2_norm}.}
 \item{nsimul}{Positive integer indicating the number of
 MC simulations that will be used to estimate the distribution
 of the statistic. Increasing the number of simulations will
-imrpove the estimation, but it will increase the computational
+improve the estimation, but it will increase the computational
 time.
 By default, \code{nsimul = 10000}.}
 
