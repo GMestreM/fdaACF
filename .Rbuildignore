@@ -2,5 +2,5 @@
 ^\.Rproj\.user$
 ^cran-comments.md
 ^\.travis\.yml$
-^README_files/.*
-README.md
+^README-files$
+^README.md
