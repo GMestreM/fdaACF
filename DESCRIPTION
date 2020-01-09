@@ -2,7 +2,7 @@ Package: fdaACF
 Type: Package
 Title: Autocorrelation Function for Functional Time Series
 Version: 0.1.0
-Date: 2019-11-26
+Date: 2020-01-09
 Author: Guillermo Mestre Marcos [aut, cre], José Portela González [aut], Antonio Muñoz San Roque [ctb], Estrella Alonso Pérez [ctb] 
 Maintainer: Guillermo Mestre Marcos <guillermo.mestre@comillas.edu>
 Description: Quantify the serial correlation across lags of a given functional 
