@@ -15,7 +15,19 @@ plot_autocovariance <- function(fun.autocovariance,lag = 0,...){
   #' @param ... Further arguments passed to the  \code{persp}
   #' function.
   #' @examples
+  #' # Example 1
+  #' 
+  #' N <- 100
+  #' v <- seq(from = 0, to = 1, length.out = 10)
+  #' sig <- 2
+  #' bbridge <- simulate_iid_brownian_bridge(N, v, sig)
+  #' nlags <- 1
+  #' lagged_autocov <- obtain_autocovariance(Y = bbridge,nlags = nlags)
+  #' plot_autocovariance(lagged_autocov,1)
+  #' 
   #' \dontrun{
+  #' # Example 2
+  #' 
   #' N <- 500
   #' v <- seq(from = 0, to = 1, length.out = 50)
   #' sig <- 2
@@ -80,7 +92,20 @@ plot_FACF <- function(rho,Blueline,ci,...){
   #' @param ... Further arguments passed to the  \code{plot}
   #' function.
   #' @examples
+  #' # Example 1
+  #' 
+  #' N <- 100
+  #' v <- seq(from = 0, to = 1, length.out = 10)
+  #' sig <- 2
+  #' bbridge <- simulate_iid_brownian_bridge(N, v, sig)
+  #' nlags <- 15
+  #' upper_bound <- 0.95
+  #' fACF <- obtain_FACF(Y = bbridge,v = v,nlags = nlags,ci=upper_bound,figure = FALSE)
+  #' plot_FACF(rho = fACF$rho,Blueline = fACF$Blueline,ci = upper_bound)
+  #' 
   #' \dontrun{
+  #' # Example 2
+  #' 
   #' N <- 200
   #' v <- seq(from = 0, to = 1, length.out = 30)
   #' sig <- 2

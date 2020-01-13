@@ -47,7 +47,24 @@ under the hypothesis of strong functional white noise. This
 function uses Imhof's method to estimate the distribution.
 }
 \examples{
+# Example 1
+
+N <- 100
+v <- seq(from = 0, to = 1, length.out = 10)
+sig <- 2
+Y <- simulate_iid_brownian_bridge(N, v, sig)
+nlags <- 1
+autocovSurface <- obtain_autocovariance(Y,nlags)
+matindex <- obtain_suface_L2_norm (v,autocovSurface)
+# Remove lag 0
+matindex <- matindex[-1]
+Imhof_dist <- estimate_iid_distr_Imhof(Y,v,autocovSurface,matindex)
+plot(Imhof_dist$ex,Imhof_dist$ef,type = "l",main = "ecdf obtained by Imhof's method")
+grid()
+
 \dontrun{
+# Example 2
+
 N <- 400
 v <- seq(from = 0, to = 1, length.out = 50)
 sig <- 2

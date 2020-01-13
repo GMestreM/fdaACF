@@ -45,13 +45,27 @@ obtain_FACF <- function(Y,v,nlags,ci=0.95,estimation = "MC",figure = TRUE,...){
   #'     \item \code{rho}: Autocorrelation values for
   #'     each lag of the functional time series.
   #' }
+  #' @references \url{https://www.sciencedirect.com/science/article/pii/S0047259X17303512}
   #' @examples
-  #' \dontrun{
-  #' N <- 400
-  #' v <- seq(from = 0, to = 1, length.out = 50)
+  #' # Example 1
+  #' 
+  #' N <- 100
+  #' v <- seq(from = 0, to = 1, length.out = 5)
   #' sig <- 2
   #' Y <- simulate_iid_brownian_bridge(N, v, sig)
-  #' obtain_FACF(Y,v,30)
+  #' obtain_FACF(Y,v,20)
+  #' 
+  #' \dontrun{
+  #' # Example 2
+  #' 
+  #' data(elec_prices)
+  #' v <- seq(from = 1, to = 24)
+  #' nlags <- 50
+  #' obtain_FACF(Y = as.matrix(elec_prices), 
+  #' v = v,
+  #' nlags = nlags,
+  #' ci = 0.95,
+  #' figure = TRUE)
   #' }
   #' @export obtain_FACF
 
@@ -122,8 +136,19 @@ obtain_autocovariance <- function(Y,nlags){
   #' by a \eqn{(m x m)} matrix, where \eqn{m} is the
   #' number of points observed in each curve.
   #' @examples
-  #' \dontrun{
   #' # Example 1
+  #' 
+  #' N <- 100
+  #' v <- seq(from = 0, to = 1, length.out = 10)
+  #' sig <- 2
+  #' bbridge <- simulate_iid_brownian_bridge(N, v, sig)
+  #' nlags <- 1
+  #' lagged_autocov <- obtain_autocovariance(Y = bbridge,
+  #'                                         nlags = nlags)
+  #' image(x = v, y = v, z = lagged_autocov$Lag0)
+  #' 
+  #' \dontrun{
+  #' # Example 2
   #'
   #' N <- 500
   #' v <- seq(from = 0, to = 1, length.out = 50)
@@ -135,7 +160,7 @@ obtain_autocovariance <- function(Y,nlags){
   #' image(x = v, y = v, z = lagged_autocov$Lag0)
   #' image(x = v, y = v, z = lagged_autocov$Lag10)
   #'
-  #' # Example 2
+  #' # Example 3
   #'
   #' require(fields)
   #' N <- 500
@@ -216,7 +241,19 @@ obtain_autocorrelation <- function(Y,v = seq(from = 0, to = 1, length.out = ncol
   #' by a \eqn{(m x m)} matrix, where \eqn{m} is the
   #' number of points observed in each curve.
   #' @examples
+  #' # Example 1
+  #' 
+  #' N <- 100
+  #' v <- seq(from = 0, to = 1, length.out = 10)
+  #' sig <- 2
+  #' bbridge <- simulate_iid_brownian_bridge(N, v, sig)
+  #' nlags <- 1
+  #' lagged_autocor <- obtain_autocorrelation(Y = bbridge,
+  #'                                         nlags = nlags)
+  #' image(x = v, y = v, z = lagged_autocor$Lag0)
+  #' 
   #' \dontrun{
+  #' # Example 2
   #' require(fields)
   #' N <- 500
   #' v <- seq(from = 0, to = 1, length.out = 50)

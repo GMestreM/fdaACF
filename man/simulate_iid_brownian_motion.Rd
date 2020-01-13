@@ -29,11 +29,9 @@ indicated in \code{v}. The series obtained is i.i.d.
 and does not exhibit any kind of serial correlation
 }
 \examples{
-\dontrun{
-N <- 500
-v <- seq(from = 0, to = 1, length.out = 50)
+N <- 100
+v <- seq(from = 0, to = 1, length.out = 20)
 sig <- 2
 bmotion <- simulate_iid_brownian_motion(N, v, sig)
 matplot(v,t(bmotion), type = "l", xlab = "v", ylab = "Value")
-}
 }

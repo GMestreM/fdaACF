@@ -31,11 +31,9 @@ indicated in \code{v}. The series obtained is i.i.d.
 and does not exhibit any kind of serial correlation.
 }
 \examples{
-\dontrun{
-N <- 500
-v <- seq(from = 0, to = 1, length.out = 50)
+N <- 100
+v <- seq(from = 0, to = 1, length.out = 20)
 sig <- 2
 bbridge <- simulate_iid_brownian_bridge(N, v, sig)
 matplot(v,t(bbridge), type = "l", xlab = "v", ylab = "Value")
-}
 }

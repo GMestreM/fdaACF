@@ -14,13 +14,11 @@ simulate_iid_brownian_motion <- function(N, v = seq(from = 0, to = 1, length.out
   #' by default \code{1}.
   #' @return Return the simulated functional time series as a matrix.
   #' @examples
-  #' \dontrun{
-  #' N <- 500
-  #' v <- seq(from = 0, to = 1, length.out = 50)
+  #' N <- 100
+  #' v <- seq(from = 0, to = 1, length.out = 20)
   #' sig <- 2
   #' bmotion <- simulate_iid_brownian_motion(N, v, sig)
   #' matplot(v,t(bmotion), type = "l", xlab = "v", ylab = "Value")
-  #' }
   #' @export simulate_iid_brownian_motion
   dv <- length(v)
 
@@ -49,13 +47,11 @@ simulate_iid_brownian_bridge <- function(N, v = seq(from = 0, to = 1, length.out
   #' by default \code{1}.
   #' @return Return the simulated functional time series as a matrix.
   #' @examples
-  #' \dontrun{
-  #' N <- 500
-  #' v <- seq(from = 0, to = 1, length.out = 50)
+  #' N <- 100
+  #' v <- seq(from = 0, to = 1, length.out = 20)
   #' sig <- 2
   #' bbridge <- simulate_iid_brownian_bridge(N, v, sig)
   #' matplot(v,t(bbridge), type = "l", xlab = "v", ylab = "Value")
-  #' } 
   #' @export simulate_iid_brownian_bridge
   dv <- length(v)
 

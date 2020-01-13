@@ -43,7 +43,19 @@ autocovariance functions becomes \eqn{(0,1)}; thus
 defining the autocorrelation functions of the series
 }
 \examples{
+# Example 1
+
+N <- 100
+v <- seq(from = 0, to = 1, length.out = 10)
+sig <- 2
+bbridge <- simulate_iid_brownian_bridge(N, v, sig)
+nlags <- 1
+lagged_autocor <- obtain_autocorrelation(Y = bbridge,
+                                        nlags = nlags)
+image(x = v, y = v, z = lagged_autocor$Lag0)
+
 \dontrun{
+# Example 2
 require(fields)
 N <- 500
 v <- seq(from = 0, to = 1, length.out = 50)

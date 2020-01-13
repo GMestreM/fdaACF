@@ -24,7 +24,19 @@ useful to detect any kind of dependency between
 the discretization points of the series.
 }
 \examples{
+# Example 1
+
+N <- 100
+v <- seq(from = 0, to = 1, length.out = 10)
+sig <- 2
+bbridge <- simulate_iid_brownian_bridge(N, v, sig)
+nlags <- 1
+lagged_autocov <- obtain_autocovariance(Y = bbridge,nlags = nlags)
+plot_autocovariance(lagged_autocov,1)
+
 \dontrun{
+# Example 2
+
 N <- 500
 v <- seq(from = 0, to = 1, length.out = 50)
 sig <- 2

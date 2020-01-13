@@ -41,7 +41,24 @@ estimate_iid_distr_MC <- function(Y,v,autocovSurface,matindex,nsimul= 10000,figu
   #'     statistic for each MC simulation.
   #' }
   #' @examples
+  #' # Example 1
+  #' 
+  #' N <- 100
+  #' v <- seq(from = 0, to = 1, length.out = 10)
+  #' sig <- 2
+  #' Y <- simulate_iid_brownian_bridge(N, v, sig)
+  #' nlags <- 1
+  #' autocovSurface <- obtain_autocovariance(Y,nlags)
+  #' matindex <- obtain_suface_L2_norm (v,autocovSurface)
+  #' # Remove lag 0
+  #' matindex <- matindex[-1]
+  #' MC_dist <- estimate_iid_distr_MC(Y,v,autocovSurface,matindex)
+  #' plot(MC_dist$ex,MC_dist$ef,type = "l",main = "ecdf obtained by MC simulation")
+  #' grid()
+  #' 
   #' \dontrun{
+  #' # Example 2
+  #' 
   #' N <- 400
   #' v <- seq(from = 0, to = 1, length.out = 50)
   #' sig <- 2
@@ -127,7 +144,24 @@ estimate_iid_distr_Imhof <- function(Y,v,autocovSurface,matindex,figure = FALSE,
   #'     the estimated distribution.
   #' }
   #' @examples
+  #' # Example 1
+  #' 
+  #' N <- 100
+  #' v <- seq(from = 0, to = 1, length.out = 10)
+  #' sig <- 2
+  #' Y <- simulate_iid_brownian_bridge(N, v, sig)
+  #' nlags <- 1
+  #' autocovSurface <- obtain_autocovariance(Y,nlags)
+  #' matindex <- obtain_suface_L2_norm (v,autocovSurface)
+  #' # Remove lag 0
+  #' matindex <- matindex[-1]
+  #' Imhof_dist <- estimate_iid_distr_Imhof(Y,v,autocovSurface,matindex)
+  #' plot(Imhof_dist$ex,Imhof_dist$ef,type = "l",main = "ecdf obtained by Imhof's method")
+  #' grid()
+  #' 
   #' \dontrun{
+  #' # Example 2
+  #' 
   #' N <- 400
   #' v <- seq(from = 0, to = 1, length.out = 50)
   #' sig <- 2
@@ -210,13 +244,12 @@ obtain_autocov_eigenvalues <- function(v,Y,epsilon = 0.0001){
   #' @return A vector containing the \eqn{k} eigenvalues
   #' greater than \code{epsilon}.
   #' @examples
-  #' \dontrun{
-  #' N <- 400
-  #' v <- seq(from = 0, to = 1, length.out = 50)
+  #' N <- 100
+  #' v <- seq(from = 0, to = 1, length.out = 10)
   #' sig <- 2
   #' Y <- simulate_iid_brownian_bridge(N, v, sig)
   #' lambda <- obtain_autocov_eigenvalues(v = v, Y = Y)
-  #' }
+  #' 
   #'@export obtain_autocov_eigenvalues
   # Requires package pracma (needs trapz function)
   nt <- nrow(Y)
@@ -264,7 +297,21 @@ obtain_suface_L2_norm <- function(v,autocovSurface){
   #' @return A vector containing the L2 norm of the
   #' lagged autocovariance functions \code{autocovSurface}.
   #' @examples
+  #' # Example 1
+  #' 
+  #' N <- 100
+  #' v <- seq(from = 0, to = 1, length.out = 10)
+  #' sig <- 2
+  #' Y <- simulate_iid_brownian_bridge(N, v, sig)
+  #' nlags <- 1
+  #' autocovSurface <- obtain_autocovariance(Y=Y,nlags = nlags)
+  #' norms <- obtain_suface_L2_norm(v = v,autocovSurface = autocovSurface)
+  #' plot_autocovariance(fun.autocovariance = autocovSurface,lag = 1)
+  #' title(sub = paste0("Lag ",1," - L2 Norm: ",norms[2]))
+  #' 
   #' \dontrun{
+  #' # Example 2
+  #' 
   #' N <- 400
   #' v <- seq(from = 0, to = 1, length.out = 50)
   #' sig <- 2

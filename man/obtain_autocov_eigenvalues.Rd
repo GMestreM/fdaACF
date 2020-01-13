@@ -31,12 +31,10 @@ function \eqn{\hat{C}_{0}}. This functions returns the
 eigenvalues which are greater than the value \code{epsilon}.
 }
 \examples{
-\dontrun{
-N <- 400
-v <- seq(from = 0, to = 1, length.out = 50)
+N <- 100
+v <- seq(from = 0, to = 1, length.out = 10)
 sig <- 2
 Y <- simulate_iid_brownian_bridge(N, v, sig)
 lambda <- obtain_autocov_eigenvalues(v = v, Y = Y)
-}
 
 }

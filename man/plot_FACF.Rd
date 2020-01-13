@@ -29,7 +29,20 @@ of a given functional time series, including the upper i.i.d.
 bound.
 }
 \examples{
+# Example 1
+
+N <- 100
+v <- seq(from = 0, to = 1, length.out = 10)
+sig <- 2
+bbridge <- simulate_iid_brownian_bridge(N, v, sig)
+nlags <- 15
+upper_bound <- 0.95
+fACF <- obtain_FACF(Y = bbridge,v = v,nlags = nlags,ci=upper_bound,figure = FALSE)
+plot_FACF(rho = fACF$rho,Blueline = fACF$Blueline,ci = upper_bound)
+
 \dontrun{
+# Example 2
+
 N <- 200
 v <- seq(from = 0, to = 1, length.out = 30)
 sig <- 2

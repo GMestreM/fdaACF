@@ -35,8 +35,19 @@ where
 denotes the sample mean function.
 }
 \examples{
-\dontrun{
 # Example 1
+
+N <- 100
+v <- seq(from = 0, to = 1, length.out = 10)
+sig <- 2
+bbridge <- simulate_iid_brownian_bridge(N, v, sig)
+nlags <- 1
+lagged_autocov <- obtain_autocovariance(Y = bbridge,
+                                        nlags = nlags)
+image(x = v, y = v, z = lagged_autocov$Lag0)
+
+\dontrun{
+# Example 2
 
 N <- 500
 v <- seq(from = 0, to = 1, length.out = 50)
@@ -48,7 +59,7 @@ lagged_autocov <- obtain_autocovariance(Y = bbridge,
 image(x = v, y = v, z = lagged_autocov$Lag0)
 image(x = v, y = v, z = lagged_autocov$Lag10)
 
-# Example 2
+# Example 3
 
 require(fields)
 N <- 500

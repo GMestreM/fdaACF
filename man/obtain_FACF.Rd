@@ -61,11 +61,27 @@ i.i.d. bounds are included to test the presence of serial
 correlation in the data.
 }
 \examples{
-\dontrun{
-N <- 400
-v <- seq(from = 0, to = 1, length.out = 50)
+# Example 1
+
+N <- 100
+v <- seq(from = 0, to = 1, length.out = 5)
 sig <- 2
 Y <- simulate_iid_brownian_bridge(N, v, sig)
-obtain_FACF(Y,v,30)
+obtain_FACF(Y,v,20)
+
+\dontrun{
+# Example 2
+
+data(elec_prices)
+v <- seq(from = 1, to = 24)
+nlags <- 50
+obtain_FACF(Y = as.matrix(elec_prices), 
+v = v,
+nlags = nlags,
+ci = 0.95,
+figure = TRUE)
 }
+}
+\references{
+\url{https://www.sciencedirect.com/science/article/pii/S0047259X17303512}
 }

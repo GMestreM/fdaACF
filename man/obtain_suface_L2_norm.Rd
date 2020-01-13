@@ -28,7 +28,21 @@ functions is defined as
 \deqn{\sqrt(\int \int \hat{C}^{2}_{h}(u,v)du dv)}
 }
 \examples{
+# Example 1
+
+N <- 100
+v <- seq(from = 0, to = 1, length.out = 10)
+sig <- 2
+Y <- simulate_iid_brownian_bridge(N, v, sig)
+nlags <- 1
+autocovSurface <- obtain_autocovariance(Y=Y,nlags = nlags)
+norms <- obtain_suface_L2_norm(v = v,autocovSurface = autocovSurface)
+plot_autocovariance(fun.autocovariance = autocovSurface,lag = 1)
+title(sub = paste0("Lag ",1," - L2 Norm: ",norms[2]))
+
 \dontrun{
+# Example 2
+
 N <- 400
 v <- seq(from = 0, to = 1, length.out = 50)
 sig <- 2

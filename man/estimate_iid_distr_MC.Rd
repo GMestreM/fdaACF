@@ -4,8 +4,15 @@
 \alias{estimate_iid_distr_MC}
 \title{Estimate distribution of the fACF under the iid. hypothesis using MC method}
 \usage{
-estimate_iid_distr_MC(Y, v, autocovSurface, matindex, nsimul = 10000,
-  figure = FALSE, ...)
+estimate_iid_distr_MC(
+  Y,
+  v,
+  autocovSurface,
+  matindex,
+  nsimul = 10000,
+  figure = FALSE,
+  ...
+)
 }
 \arguments{
 \item{Y}{Matrix containing the discretized values
@@ -57,7 +64,24 @@ under the hypothesis of strong functional white noise. This
 function uses Montecarlo's method to estimate the distribution.
 }
 \examples{
+# Example 1
+
+N <- 100
+v <- seq(from = 0, to = 1, length.out = 10)
+sig <- 2
+Y <- simulate_iid_brownian_bridge(N, v, sig)
+nlags <- 1
+autocovSurface <- obtain_autocovariance(Y,nlags)
+matindex <- obtain_suface_L2_norm (v,autocovSurface)
+# Remove lag 0
+matindex <- matindex[-1]
+MC_dist <- estimate_iid_distr_MC(Y,v,autocovSurface,matindex)
+plot(MC_dist$ex,MC_dist$ef,type = "l",main = "ecdf obtained by MC simulation")
+grid()
+
 \dontrun{
+# Example 2
+
 N <- 400
 v <- seq(from = 0, to = 1, length.out = 50)
 sig <- 2
