@@ -54,7 +54,7 @@ lagged_autocor <- obtain_autocorrelation(Y = bbridge,
                                         nlags = nlags)
 image(x = v, y = v, z = lagged_autocor$Lag0)
 
-\dontrun{
+\donttest{
 # Example 2
 require(fields)
 N <- 500

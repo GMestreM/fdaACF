@@ -62,7 +62,7 @@ Imhof_dist <- estimate_iid_distr_Imhof(Y,v,autocovSurface,matindex)
 plot(Imhof_dist$ex,Imhof_dist$ef,type = "l",main = "ecdf obtained by Imhof's method")
 grid()
 
-\dontrun{
+\donttest{
 # Example 2
 
 N <- 400

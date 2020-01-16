@@ -56,7 +56,7 @@ estimate_iid_distr_MC <- function(Y,v,autocovSurface,matindex,nsimul= 10000,figu
   #' plot(MC_dist$ex,MC_dist$ef,type = "l",main = "ecdf obtained by MC simulation")
   #' grid()
   #' 
-  #' \dontrun{
+  #' \donttest{
   #' # Example 2
   #' 
   #' N <- 400
@@ -159,7 +159,7 @@ estimate_iid_distr_Imhof <- function(Y,v,autocovSurface,matindex,figure = FALSE,
   #' plot(Imhof_dist$ex,Imhof_dist$ef,type = "l",main = "ecdf obtained by Imhof's method")
   #' grid()
   #' 
-  #' \dontrun{
+  #' \donttest{
   #' # Example 2
   #' 
   #' N <- 400
@@ -309,7 +309,7 @@ obtain_suface_L2_norm <- function(v,autocovSurface){
   #' plot_autocovariance(fun.autocovariance = autocovSurface,lag = 1)
   #' title(sub = paste0("Lag ",1," - L2 Norm: ",norms[2]))
   #' 
-  #' \dontrun{
+  #' \donttest{
   #' # Example 2
   #' 
   #' N <- 400

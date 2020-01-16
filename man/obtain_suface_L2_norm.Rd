@@ -40,7 +40,7 @@ norms <- obtain_suface_L2_norm(v = v,autocovSurface = autocovSurface)
 plot_autocovariance(fun.autocovariance = autocovSurface,lag = 1)
 title(sub = paste0("Lag ",1," - L2 Norm: ",norms[2]))
 
-\dontrun{
+\donttest{
 # Example 2
 
 N <- 400

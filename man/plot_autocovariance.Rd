@@ -34,7 +34,7 @@ nlags <- 1
 lagged_autocov <- obtain_autocovariance(Y = bbridge,nlags = nlags)
 plot_autocovariance(lagged_autocov,1)
 
-\dontrun{
+\donttest{
 # Example 2
 
 N <- 500

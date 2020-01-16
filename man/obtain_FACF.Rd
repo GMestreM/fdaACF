@@ -69,7 +69,7 @@ sig <- 2
 Y <- simulate_iid_brownian_bridge(N, v, sig)
 obtain_FACF(Y,v,20)
 
-\dontrun{
+\donttest{
 # Example 2
 
 data(elec_prices)

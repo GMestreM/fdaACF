@@ -40,7 +40,7 @@ upper_bound <- 0.95
 fACF <- obtain_FACF(Y = bbridge,v = v,nlags = nlags,ci=upper_bound,figure = FALSE)
 plot_FACF(rho = fACF$rho,Blueline = fACF$Blueline,ci = upper_bound)
 
-\dontrun{
+\donttest{
 # Example 2
 
 N <- 200

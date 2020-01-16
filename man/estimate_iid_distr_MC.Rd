@@ -79,7 +79,7 @@ MC_dist <- estimate_iid_distr_MC(Y,v,autocovSurface,matindex)
 plot(MC_dist$ex,MC_dist$ef,type = "l",main = "ecdf obtained by MC simulation")
 grid()
 
-\dontrun{
+\donttest{
 # Example 2
 
 N <- 400

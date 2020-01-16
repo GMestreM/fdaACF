@@ -25,7 +25,7 @@ plot_autocovariance <- function(fun.autocovariance,lag = 0,...){
   #' lagged_autocov <- obtain_autocovariance(Y = bbridge,nlags = nlags)
   #' plot_autocovariance(lagged_autocov,1)
   #' 
-  #' \dontrun{
+  #' \donttest{
   #' # Example 2
   #' 
   #' N <- 500
@@ -103,7 +103,7 @@ plot_FACF <- function(rho,Blueline,ci,...){
   #' fACF <- obtain_FACF(Y = bbridge,v = v,nlags = nlags,ci=upper_bound,figure = FALSE)
   #' plot_FACF(rho = fACF$rho,Blueline = fACF$Blueline,ci = upper_bound)
   #' 
-  #' \dontrun{
+  #' \donttest{
   #' # Example 2
   #' 
   #' N <- 200

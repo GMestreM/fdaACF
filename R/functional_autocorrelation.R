@@ -55,7 +55,7 @@ obtain_FACF <- function(Y,v,nlags,ci=0.95,estimation = "MC",figure = TRUE,...){
   #' Y <- simulate_iid_brownian_bridge(N, v, sig)
   #' obtain_FACF(Y,v,20)
   #' 
-  #' \dontrun{
+  #' \donttest{
   #' # Example 2
   #' 
   #' data(elec_prices)
@@ -147,7 +147,7 @@ obtain_autocovariance <- function(Y,nlags){
   #'                                         nlags = nlags)
   #' image(x = v, y = v, z = lagged_autocov$Lag0)
   #' 
-  #' \dontrun{
+  #' \donttest{
   #' # Example 2
   #'
   #' N <- 500
@@ -252,7 +252,7 @@ obtain_autocorrelation <- function(Y,v = seq(from = 0, to = 1, length.out = ncol
   #'                                         nlags = nlags)
   #' image(x = v, y = v, z = lagged_autocor$Lag0)
   #' 
-  #' \dontrun{
+  #' \donttest{
   #' # Example 2
   #' require(fields)
   #' N <- 500

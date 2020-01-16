@@ -46,7 +46,7 @@ lagged_autocov <- obtain_autocovariance(Y = bbridge,
                                         nlags = nlags)
 image(x = v, y = v, z = lagged_autocov$Lag0)
 
-\dontrun{
+\donttest{
 # Example 2
 
 N <- 500
