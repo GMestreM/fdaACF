@@ -25,6 +25,12 @@ library(devtools)
 install_github('GMestreM/fdaACF')
 ```
 
+To install the stable version from CRAN, simply run the following from an R console:
+
+```r
+install.packages('fdaACF')
+```
+
 ### Bug reports
 
 Please submit any bug reports (or suggestions) using the [issues](https://github.com/GMestreM/fdaACF/issues) tab of the GitHub page.
