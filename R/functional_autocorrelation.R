@@ -118,7 +118,7 @@ obtain_autocovariance <- function(Y,nlags){
   #' series. Given \eqn{Y_{1},...,Y_{T}} a functional time
   #' series, the sample autocovariance functions
   #' \eqn{\hat{C}_{h}(u,v)} are given by:
-  #' \deqn{\hat{C}_{h}(u,v) =  \frac{1}{T} \sum_{i=1}^{T-h}(Y_{i}(u) - \overline{T}_{T}(u))(Y_{i+h}(v) - \overline{Y}_{T}(v))}
+  #' \deqn{\hat{C}_{h}(u,v) =  \frac{1}{T} \sum_{i=1}^{T-h}(Y_{i}(u) - \overline{Y}_{T}(u))(Y_{i+h}(v) - \overline{Y}_{T}(v))}
   #' where
   #' \eqn{ \overline{Y}_{T}(u) = \frac{1}{T} \sum_{i = 1}^{T} Y_{i}(t)}
   #' denotes the sample mean function.
@@ -217,7 +217,7 @@ obtain_autocorrelation <- function(Y,v = seq(from = 0, to = 1, length.out = ncol
   #' series. Given \eqn{Y_{1},...,Y_{T}} a functional time
   #' series, the sample autocovariance functions
   #' \eqn{\hat{C}_{h}(u,v)} are given by:
-  #' \deqn{\hat{C}_{h}(u,v) =  \frac{1}{T} \sum_{i=1}^{T-h}(Y_{i}(u) - \overline{T}_{T}(u))(Y_{i+h}(v) - \overline{Y}_{T}(v))}
+  #' \deqn{\hat{C}_{h}(u,v) =  \frac{1}{T} \sum_{i=1}^{T-h}(Y_{i}(u) - \overline{Y}_{T}(u))(Y_{i+h}(v) - \overline{Y}_{T}(v))}
   #' where
   #' \eqn{ \overline{Y}_{T}(u) = \frac{1}{T} \sum_{i = 1}^{T} Y_{i}(t)}
   #' denotes the sample mean function. By normalizing these
