@@ -303,4 +303,136 @@ obtain_autocorrelation <- function(Y,v = seq(from = 0, to = 1, length.out = ncol
 }
 
 
-
+obtain_covariance <- function(Y,X,nlags = 0){
+  #' Estimate the covariance function of two FTS
+  #'
+  #' @description Obtain the empirical covariance function 
+  #' of the functional time
+  #' series \eqn{Y_{t}} and \eqn{X_{t}}. Given 
+  #' \eqn{Y_{1},...,Y_{T}} and \eqn{X_{1},...,X_{T}} two
+  #' functional time
+  #' series, the sample autocovariance functions
+  #' \eqn{\hat{\Sigma}_{Y,X}(u,v)} are given by:
+  #' \deqn{\hat{\Sigma}_{Y,X}(u,v) =  \frac{1}{T} \sum_{i=1}^{T-h}(Y_{i}(u) - \overline{Y}_{T}(u))(X_{i}(v) - \overline{X}_{T}(v))}
+  #' where
+  #' \eqn{ \overline{Y}_{T}(u) = \frac{1}{T} \sum_{i = 1}^{T} Y_{i}(t)}
+  #' denotes the sample mean function for functional time series \eqn{Y_{t}}.
+  #'
+  #' @param Y Matrix containing the discretized values
+  #' of the first functional time series. The dimension of the
+  #' matrix is \eqn{(n x m)}, where \eqn{n} is the
+  #' number of curves and \eqn{m} is the number of points
+  #' observed in each curve.
+  #' @param X Matrix containing the discretized values
+  #' of the second functional time series. The dimension of the
+  #' matrix is \eqn{(n x q)}, where \eqn{n} is the
+  #' number of curves and \eqn{q} is the number of points
+  #' observed in each curve.
+  #' @param nlags Number of lagged covariance operators
+  #' of the functional time series that will be estimated.
+  #' By default \code{nlags = 0}.
+  #' @return Return a list that contains the lagged covariance
+  #' functions of time series \eqn{Y} and \eqn{X}. Each 
+  #' element of the list contains a matrix with the 
+  #' discretized values of the lagged covariance function
+  #' estimated from the data. The covariance function is 
+  #' given by a \eqn{(m x q)} matrix, where \eqn{m} is the
+  #' number of points observed in curve \eqn{Y_{t}} and
+  #' \eqn{q} is the number of points observed in curve 
+  #' \eqn{X_{t}}.
+  #' @examples
+  #' # Example 1
+  #' 
+  #' N <- 100
+  #' v <- seq(from = 0, to = 1, length.out = 10)
+  #' sig <- 2
+  #' Y <- simulate_iid_brownian_bridge(N, v, sig)
+  #' X <- simulate_iid_brownian_bridge(N, v, 0.5)
+  #' nlags <- 1
+  #' cov <- obtain_covariance(Y = Y,
+  #'                          X = X,
+  #'                          nlags = nlags)
+  #' image(x = v, y = v, z = cov$Lag0)
+  #' 
+  #' \donttest{
+  #' # Example 2
+  #'
+  #' N <- 500
+  #' v <- seq(from = 0, to = 1, length.out = 50)
+  #' sig <- 2
+  #' Y <- simulate_iid_brownian_bridge(N, v, sig)
+  #' Y1 <- Y[1:N-1,]
+  #' Y2 <- Y[2:N,]
+  #' nlags <- 10
+  #' cov <- obtain_covariance(Y = Y1, X = Y2, nlags = nlags)
+  #' image(x = v, y = v, z = cov$Lag0, main = "Lag 0")
+  #' image(x = v, y = v, z = cov$Lag1, main = "Lag 1")
+  #' image(x = v, y = v, z = cov$Lag2, main = "Lag 2")
+  #' # Example 3
+  #'
+  #' require(fields)
+  #' N <- 500
+  #' v <- seq(from = 0, to = 1, length.out = 50)
+  #' sig <- 2
+  #' Y <- simulate_iid_brownian_bridge(N, v, sig)
+  #' nlags <- 3
+  #' Y1 <- Y[1:N-1,]
+  #' Y2 <- Y[2:N,]
+  #' cov <- obtain_covariance(Y = Y1,X = Y2, nlags = nlags)
+  #' z_lims <- range(cov$Lag0)
+  #' colors <- heat.colors(12)
+  #' opar <- par(no.readonly = TRUE)
+  #' par(mfrow = c(1,5))
+  #' par(oma=c( 0,0,0,6)) 
+  #' for(k in 0:nlags){
+  #'    image(x=v,
+  #'          y=v,
+  #'          z = cov[[paste0("Lag",k)]],
+  #'          main = paste("Lag",k),
+  #'          col = colors,
+  #'          xlab = "u",
+  #'          ylab = "v")
+  #' }
+  #' par(oma=c( 0,0,0,2.5)) # reset margin to be much smaller.
+  #' image.plot( legend.only=TRUE, legend.width = 2,zlim=z_lims, col = colors)
+  #' par(opar)
+  #' 
+  #' # Perspective Plots
+  #' opar <- par(no.readonly = TRUE)
+  #' par(mfrow = c(1,4))
+  #' for(k in 0:nlags){
+  #'   persp(x=v,
+  #'         y=v,
+  #'         z = cov[[paste0("Lag",k)]],
+  #'         main = paste("Lag",k),
+  #'         xlab = "u",
+  #'         ylab = "v",
+  #'         theta = 330,
+  #'         phi = 30,
+  #'         ticktype = "detailed",
+  #'         zlab = "")
+  #' }
+  #' par(opar)
+  #' }
+  #' @export obtain_covariance
+  
+  nt <- nrow(Y)
+  nu <- ncol(Y)
+  nv <- ncol(X)
+  
+  # Obtain mean function of Y
+  mean.Y <- colMeans(Y)
+  # Obtain mean function of X
+  mean.X <- colMeans(X)
+  
+  # Compute covariance function
+  fun.covariance <- list()
+  for(kk in 0:nlags){
+    fun.covariance[[paste("Lag",kk,sep = "")]] <- matrix(0,nrow = nu,ncol = nv)
+    for(ind_curve in (1+kk):nt){
+      fun.covariance[[paste("Lag",kk,sep = "")]] <- fun.covariance[[paste("Lag",kk,sep = "")]] + (as.numeric(Y[ind_curve,] - mean.Y)) %*% t(as.numeric(X[ind_curve - kk,] - mean.X))
+    }
+    fun.covariance[[paste("Lag",kk,sep = "")]] <- fun.covariance[[paste("Lag",kk,sep = "")]]/(nt-1)
+  }
+  return(fun.covariance)
+}
