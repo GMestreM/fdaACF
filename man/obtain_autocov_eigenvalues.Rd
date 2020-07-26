@@ -18,7 +18,8 @@ observed in each curve.}
 
 \item{epsilon}{Value used to determine how many
 eigenvalues will be returned. The eigenvalues
-\eqn{\lambda_{j} > \code{epsilon}} will be returned.
+\eqn{\lambda_{j}/\lambda_{1} > \code{epsilon}} 
+will be returned.
 By default \code{epsilon = 0.0001}.}
 }
 \value{

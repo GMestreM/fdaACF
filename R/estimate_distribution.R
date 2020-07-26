@@ -239,7 +239,8 @@ obtain_autocov_eigenvalues <- function(v,Y,epsilon = 0.0001){
   #' observed in each curve.
   #' @param epsilon Value used to determine how many
   #' eigenvalues will be returned. The eigenvalues
-  #' \eqn{\lambda_{j} > \code{epsilon}} will be returned.
+  #' \eqn{\lambda_{j}/\lambda_{1} > \code{epsilon}} 
+  #' will be returned.
   #' By default \code{epsilon = 0.0001}.
   #' @return A vector containing the \eqn{k} eigenvalues
   #' greater than \code{epsilon}.
@@ -269,8 +270,21 @@ obtain_autocov_eigenvalues <- function(v,Y,epsilon = 0.0001){
   # Obtain eigenvalues and eigenfunctions of W/n
   eigenlist <- eigen(W/nt)
 
-  # Select the k eigenvalues higher than epsilon
-  k <- which(eigenlist$values>epsilon)
+  if(F){
+    # OLD 
+    # Select the k eigenvalues higher than epsilon
+    k <- which(eigenlist$values>epsilon)
+  }else{
+    # NEW
+    # Obtain all first $m$ eigenvalues such that
+    # $$
+    # \lambda_{m}/\lambda_{1} > \varepsilon
+    # $$
+    lambd1 <- eigenlist$values[1]
+    frac <- eigenlist$values/lambd1
+    k <- which(frac > epsilon)
+  }
+  
 
   lambda <- eigenlist$values[k]
   lambda
