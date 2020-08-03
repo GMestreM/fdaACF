@@ -6,14 +6,16 @@ Date: 2020-01-16
 Author: Guillermo Mestre Marcos [aut, cre], José Portela González [aut], Antonio Muñoz San Roque [ctb], Estrella Alonso Pérez [ctb] 
 Maintainer: Guillermo Mestre Marcos <guillermo.mestre@comillas.edu>
 Description: Quantify the serial correlation across lags of a given functional 
-    time series using an autocorrelation function for functional time series.
-    The autocorrelation function is based on the L2 norm of the lagged covariance 
+    time series using an autocorrelation function and a partial autocorrelation
+    function for functional time series.
+    The autocorrelation functions are based on the L2 norm of the lagged covariance 
     operators of the series. Functions are available for estimating the 
-    distribution of the autocorrelation function under the assumption 
+    distribution of the autocorrelation functions under the assumption 
     of strong functional white noise.
 Imports:
     CompQuadForm,
-    pracma
+    pracma,
+    vars
 NeedsCompilation: no
 URL: https://github.com/GMestreM/fdaACF
 BugReports: https://github.com/GMestreM/fdaACF/issues
