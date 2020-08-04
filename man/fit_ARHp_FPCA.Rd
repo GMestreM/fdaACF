@@ -7,7 +7,27 @@
 fit_ARHp_FPCA(y, v, p, n_harm, show_varprop = T)
 }
 \arguments{
-\item{y}{A matrix containing}
+\item{y}{Matrix containing the discretized values
+of the functional time series. The dimension of the
+matrix is \eqn{(n x m)}, where \eqn{n} is the
+number of curves and \eqn{m} is the number of points
+observed in each curve.}
+
+\item{v}{Numeric vector that contains the 
+discretization points of the curves.}
+
+\item{p}{Numeric value specifying the order 
+of the functional autoregressive 
+model to be fitted.}
+
+\item{n_harm}{Numeric value specifying the number
+of functional principal components to be used when fitting
+the \eqn{ARH(p)} model.}
+
+\item{show_varprop}{Logical. If \code{show_varprop = TRUE},
+a plot of the proportion of variance explained by the first
+\code{n_harm} functional principal components will be shown.
+By default \code{show_varprop = TRUE}.}
 }
 \description{
 Fit an \eqn{ARH(p)} model to a given functional
@@ -61,7 +81,7 @@ legend("bottomleft", legend = c("real","est"),
 
 }
 \references{
-Aue, A., Norinho, D. D., Hörmann, S. (2015).
+Aue, A., Norinho, D. D., Hormann, S. (2015).
 \emph{On the Prediction of Stationary Functional 
 Time Series}
 Journal of the American Statistical Association, 

@@ -14,8 +14,7 @@ matrix is \eqn{(n x m)}, where \eqn{n} is the
 number of curves and \eqn{m} is the number of points
 observed in each curve.}
 
-\item{v}{Discretization points of the curves, by default
-\code{seq(from = 0, to = 1, length.out = 100)}.}
+\item{v}{Discretization points of the curves.}
 
 \item{nlags}{Number of lagged covariance operators
 of the functional time series that will be used

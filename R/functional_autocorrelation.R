@@ -131,8 +131,7 @@ obtain_FPACF <- function(Y,v,nlags,n_harm,ci=0.95,estimation = "MC",figure = TRU
   #' matrix is \eqn{(n x m)}, where \eqn{n} is the
   #' number of curves and \eqn{m} is the number of points
   #' observed in each curve.
-  #' @param v Discretization points of the curves, by default
-  #' \code{seq(from = 0, to = 1, length.out = 100)}.
+  #' @param v Discretization points of the curves.
   #' @param nlags Number of lagged covariance operators
   #' of the functional time series that will be used
   #' to estimate the partial autocorrelation function.
@@ -216,8 +215,8 @@ obtain_FPACF <- function(Y,v,nlags,n_harm,ci=0.95,estimation = "MC",figure = TRU
     Yest_ARIMA <- fit_ARHp_FPCA(y = y, v = v, p = lag_PACF-1, n_harm = n_harm)$y_est
     if(F){
       kkk <- 30
-      plot(v,y[kkk,],type = "b")
-      lines(v,Yest_ARIMA[kkk,],col = "red")
+      graphics::plot(v,y[kkk,],type = "b")
+      graphics::lines(v,Yest_ARIMA[kkk,],col = "red")
     }
     
     # 2 - Fit ARH(1) to the REVERSED series
@@ -252,9 +251,9 @@ obtain_FPACF <- function(Y,v,nlags,n_harm,ci=0.95,estimation = "MC",figure = TRU
     sup_cov = (1/count)*sup_cov
     
     if(F){
-      persp(v,v,sup_cov,theta = 330, phi = 20, 
-            main = paste0("Covariance surface PACF lag ",lag_PACF),
-            ticktype = "detailed")
+      graphics::persp(v,v,sup_cov,theta = 330, phi = 20, 
+                      main = paste0("Covariance surface PACF lag ",lag_PACF),
+                      ticktype = "detailed")
     }
     
     # L2 norm of covariance surface
@@ -280,7 +279,7 @@ obtain_FPACF <- function(Y,v,nlags,n_harm,ci=0.95,estimation = "MC",figure = TRU
     
     
     if(F){
-      persp(v,v,var_1,theta = 330, phi = 20, ticktype = "detailed", main = "var 1") 
+      graphics::persp(v,v,var_1,theta = 330, phi = 20, ticktype = "detailed", main = "var 1") 
     }
     traza_1 <- pracma::trapz(v,diag(var_1));
     
@@ -298,7 +297,7 @@ obtain_FPACF <- function(Y,v,nlags,n_harm,ci=0.95,estimation = "MC",figure = TRU
     }
     var_2 = (1/count)*var_2
     if(F){
-      persp(v,v,var_2,theta = 330, phi = 20, ticktype = "detailed", main = "var 2") 
+      graphics::persp(v,v,var_2,theta = 330, phi = 20, ticktype = "detailed", main = "var 2") 
     }
     
     traza_2 = pracma::trapz(v,diag(var_2));

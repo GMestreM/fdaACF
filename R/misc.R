@@ -74,7 +74,7 @@ reconstruct_fd_from_PCA <- function(pca_struct,scores,centerfns = T){
   #'
   #' @param pca_struct List obtained after calling
   #' function \code{pca.fd}.
-  #' @param score Numerical vector that contains the
+  #' @param scores Numerical vector that contains the
   #' scores of the fPCA decomposition for one
   #' functional observation.
   #' @param centerfns Logical value specifying
@@ -102,7 +102,7 @@ reconstruct_fd_from_PCA <- function(pca_struct,scores,centerfns = T){
   #' # Reconstruct first curve
   #' fd_rec <- reconstruct_fd_from_PCA(pca_struct = pca_struct, scores = pca_struct$scores[1,])
   #' plot(fd_sim[1])
-  #' plot(fd_rec, add = T, col = "red")
+  #' plot(fd_rec, add = TRUE, col = "red")
   #' legend("topright",
   #'        legend = c("Real Curve", "PCA Reconstructed"),
   #'        col = c("black","red"),
@@ -124,7 +124,7 @@ reconstruct_fd_from_PCA <- function(pca_struct,scores,centerfns = T){
   #' # Reconstruct first curve
   #' fd_rec <- reconstruct_fd_from_PCA(pca_struct = pca_struct, scores = pca_struct$scores[1,])
   #' plot(fd_sim[1])
-  #' plot(fd_rec, add = T, col = "red")
+  #' plot(fd_rec, add = TRUE, col = "red")
   #' legend("topright",
   #'        legend = c("Real Curve", "PCA Reconstructed"),
   #'        col = c("black","red"),
@@ -205,7 +205,23 @@ fit_ARHp_FPCA <- function(y, v, p, n_harm, show_varprop = T){
   #' is used to re-transform the fitted values into functional
   #' observations.
   #' 
-  #' @param y A matrix containing
+  #' @param y Matrix containing the discretized values
+  #' of the functional time series. The dimension of the
+  #' matrix is \eqn{(n x m)}, where \eqn{n} is the
+  #' number of curves and \eqn{m} is the number of points
+  #' observed in each curve.
+  #' @param v Numeric vector that contains the 
+  #' discretization points of the curves.
+  #' @param p Numeric value specifying the order 
+  #' of the functional autoregressive 
+  #' model to be fitted.
+  #' @param n_harm Numeric value specifying the number
+  #' of functional principal components to be used when fitting
+  #' the \eqn{ARH(p)} model.
+  #' @param show_varprop Logical. If \code{show_varprop = TRUE},
+  #' a plot of the proportion of variance explained by the first
+  #' \code{n_harm} functional principal components will be shown.
+  #' By default \code{show_varprop = TRUE}.
   #' 
   #' @examples 
   #' # Example 1
@@ -246,7 +262,7 @@ fit_ARHp_FPCA <- function(y, v, p, n_harm, show_varprop = T){
   #' legend("bottomleft", legend = c("real","est"),
   #'        lty = 1, col = c(1,2))
   #' 
-  #' @references Aue, A., Norinho, D. D., Hörmann, S. (2015).
+  #' @references Aue, A., Norinho, D. D., Hormann, S. (2015).
   #' \emph{On the Prediction of Stationary Functional 
   #' Time Series}
   #' Journal of the American Statistical Association, 
@@ -260,12 +276,12 @@ fit_ARHp_FPCA <- function(y, v, p, n_harm, show_varprop = T){
   pca <- fda::pca.fd(fdobj = y_fd, nharm = n_harm)
   
   if(show_varprop){
-    plot(1:n_harm,cumsum(pca$varprop),
-         type = "b",
-         pch = 20,
-         main = "% Variance explained by FPCA",
-         xlab = "nº of components",
-         ylab = "% Var. Expl")
+    graphics::plot(1:n_harm,cumsum(pca$varprop),
+                   type = "b",
+                   pch = 20,
+                   main = "% Variance explained by FPCA",
+                   xlab = "n of components",
+                   ylab = "% Var. Expl")
   }
   
   y_scores <- pca$scores
@@ -279,7 +295,7 @@ fit_ARHp_FPCA <- function(y, v, p, n_harm, show_varprop = T){
     summary(mod)
   }
   
-  fitted_vals <- fitted(mod)
+  fitted_vals <- stats::fitted(mod)
   
   # Fill with NA
   fitted_vals <- rbind(matrix(NA,nrow = nrow(y_scores)-nrow(fitted_vals),
@@ -287,8 +303,8 @@ fit_ARHp_FPCA <- function(y, v, p, n_harm, show_varprop = T){
                        fitted_vals)
   
   if(F){
-    plot(y_scores[,1], type = "l")
-    lines(fitted_vals[,1], col = "red")
+    graphics::plot(y_scores[,1], type = "l")
+    graphics::lines(fitted_vals[,1], col = "red")
   }
   
   
@@ -301,8 +317,8 @@ fit_ARHp_FPCA <- function(y, v, p, n_harm, show_varprop = T){
     fd_aux_mat <- fda::eval.fd(evalarg = v, fdobj = fd_aux)
     
     if(F){
-      plot(v,y[ii,], type = "b")
-      lines(v,fd_aux_mat,col = "red")
+      graphics::plot(v,y[ii,], type = "b")
+      graphics::lines(v,fd_aux_mat,col = "red")
     }
     
     y_rec[ii,] <- fd_aux_mat

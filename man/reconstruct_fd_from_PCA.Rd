@@ -10,14 +10,14 @@ reconstruct_fd_from_PCA(pca_struct, scores, centerfns = T)
 \item{pca_struct}{List obtained after calling
 function \code{pca.fd}.}
 
+\item{scores}{Numerical vector that contains the
+scores of the fPCA decomposition for one
+functional observation.}
+
 \item{centerfns}{Logical value specifying
 wheter the FPCA performed used \code{centerfns = T}
 or \code{centerfns = F}. By default
 \code{centerfns = T}.}
-
-\item{score}{Numerical vector that contains the
-scores of the fPCA decomposition for one
-functional observation.}
 }
 \value{
 Returns a object of type \code{fd}
@@ -49,7 +49,7 @@ pca_struct <- fda::pca.fd(fd_sim,nharm = 6)
 # Reconstruct first curve
 fd_rec <- reconstruct_fd_from_PCA(pca_struct = pca_struct, scores = pca_struct$scores[1,])
 plot(fd_sim[1])
-plot(fd_rec, add = T, col = "red")
+plot(fd_rec, add = TRUE, col = "red")
 legend("topright",
        legend = c("Real Curve", "PCA Reconstructed"),
        col = c("black","red"),
@@ -71,7 +71,7 @@ pca_struct <- fda::pca.fd(fd_sim,nharm = dv)
 # Reconstruct first curve
 fd_rec <- reconstruct_fd_from_PCA(pca_struct = pca_struct, scores = pca_struct$scores[1,])
 plot(fd_sim[1])
-plot(fd_rec, add = T, col = "red")
+plot(fd_rec, add = TRUE, col = "red")
 legend("topright",
        legend = c("Real Curve", "PCA Reconstructed"),
        col = c("black","red"),
