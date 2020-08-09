@@ -9,8 +9,8 @@
 
 ### R CMD check
 
--- R CMD check results -------------------------------- fdaACF 0.1.0 ----
-Duration: 25.2s
+── R CMD check results ─── fdaACF 0.2.0 ────
+Duration: 19.7s
 
 0 errors v | 0 warnings v | 0 notes v
 
