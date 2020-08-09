@@ -1,9 +1,9 @@
 Package: fdaACF
 Type: Package
 Title: Autocorrelation Function for Functional Time Series
-Version: 0.1.0
-Date: 2020-01-16
-Author: Guillermo Mestre Marcos [aut, cre], José Portela González [aut], Antonio Muñoz San Roque [ctb], Estrella Alonso Pérez [ctb] 
+Version: 0.2.0
+Date: 2020-08-09
+Author: Guillermo Mestre Marcos [aut, cre], José Portela González [aut], Gregory Rice [aut], Antonio Muñoz San Roque [ctb], Estrella Alonso Pérez [ctb] 
 Maintainer: Guillermo Mestre Marcos <guillermo.mestre@comillas.edu>
 Description: Quantify the serial correlation across lags of a given functional 
     time series using an autocorrelation function and a partial autocorrelation
@@ -28,8 +28,10 @@ Depends: R (>= 3.5.0)
 Authors@R: c(
 	person(given = "Guillermo", family = "Mestre Marcos", 
       email = "guillermo.mestre@comillas.edu", role = c("aut", "cre")),
-    person(given = "José", family = "Portela González", 
+  person(given = "José", family = "Portela González", 
       email = "Jose.Portela@iit.comillas.edu", role = "aut"),
+      person(given = "Gregory", family = "Rice", 
+      email = "grice@uwaterloo.ca", role = "aut"),
 	person(given = "Antonio", family = "Muñoz San Roque", 
       email = "antonio.munoz@iit.comillas.edu", role = "ctb"),
 	person(given = "Estrella", family = "Alonso Pérez", 

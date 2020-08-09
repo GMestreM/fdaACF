@@ -4,6 +4,7 @@ Autocorrelation Function for Functional Time Series
 
 #### *Guillermo Mestre Marcos, guillermo.mestre@comillas.edu*
 #### *José Portela González, jose.portela@iit.comillas.edu*
+#### *Gregory Rice, grice@uwaterloo.ca*
 #### *Antonio Muñoz San Roque, Antonio.Munoz@iit.comillas.edu*
 #### *Estrella Alonso Pérez, ealonso@icai.comillas.edu*
 
@@ -54,13 +55,13 @@ matplot(t(elec_prices), type = "l",lty = 1,xlab = "Hours", ylab = "Price (€/MW
 ![](README-files/figure-html/elec_prices.png)<!-- -->
 
 
-The `obtain_FACF` function estimates the lagged autocorrelation function for a given functional time series and its distribution under the hypothesis of strong functional white noise. The visual representation of the lagged ACF can be used to identify seasonal patterns in the functional data as well as auto-regressive or moving average terms. In addition, i.i.d. bounds are included to test the presence of serial correlation in the data.
+The `obtain_FACF` and `obtain_FPACF` functions estimates the lagged autocorrelation function and partial autocorrelation function for a given functional time series and its distribution under the hypothesis of strong functional white noise. The visual representation of the lagged ACF and PACF can be used to identify seasonal patterns in the functional data as well as auto-regressive or moving average terms. In addition, i.i.d. bounds are included to test the presence of serial correlation in the data.
 
 
 ```r
 # Define the discretization axis
 v <- seq(from = 1, to = 24)
-nlags <- 50
+nlags <- 30
 ci <- 0.95
 
 # Autocorrelation function for functional data
@@ -69,16 +70,35 @@ FACF <- obtain_FACF(Y = as.matrix(elec_prices),
                     nlags = nlags,
                     ci = ci,
                     figure = TRUE)
+
+# Partial autocorrelation function for functional data
+FPACF <- obtain_FPACF(Y = as.matrix(elec_prices), 
+                      v = v,
+                      nlags = nlags,
+                      n_harm = 5, 
+                      ci = ci,
+                      figure = FALSE)
+
+par(mfrow = c(1,2))
+plot_FACF(rho = FACF$rho,
+          Blueline = FACF$Blueline,
+          ci = ci,
+          main = "FACF")
+plot_FACF(rho = FPACF$rho,
+          Blueline = FPACF$Blueline,
+          ci = ci,
+          main = "FPACF")
+par(mfrow = c(1,1))
 ```
 
 
-![](README-files/figure-html/FACF_prices.png)<!-- -->
+![](README-files/figure-html/FACF_FPACF_Prices.png)<!-- -->
 
 
 The shape of the functional ACF indicates the presence of a daily seasonal effect in the data, as well as the presence of serial correlation.
 
 
-The functional ACF is based on the L2 norm of the covariance functions of the data, which can be estimated with function `obtain_autocovariance` and plotted with function `plot_autocovariance`. In order to test the i.i.d. hypothesis, a functional white noise series will be simulated with function `simulate_iid_brownian_bridge`.
+The functional ACF and PACF are based on the L2 norm of the covariance functions of the data, which can be estimated with function `obtain_autocovariance` and plotted with function `plot_autocovariance`. In order to test the i.i.d. hypothesis, a functional white noise series will be simulated with function `simulate_iid_brownian_bridge`.
 
 
 ```r
