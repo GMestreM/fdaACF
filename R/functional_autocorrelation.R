@@ -180,12 +180,12 @@ obtain_FPACF <- function(Y,v,nlags,n_harm,ci=0.95,estimation = "MC",figure = TRU
   #' @examples
   #' # Example 1
   #' 
-  #' N <- 200
+  #' N <- 100
   #' v <- seq(from = 0, to = 1, length.out = 5)
   #' sig <- 2
   #' set.seed(15)
   #' Y <- simulate_iid_brownian_bridge(N, v, sig)
-  #' obtain_FPACF(Y,v,15, n_harm = 2)
+  #' obtain_FPACF(Y,v,10, n_harm = 2)
   #' 
   #' \donttest{
   #' # Example 2
@@ -422,12 +422,12 @@ FTS_identification <- function(Y,v,nlags,n_harm = NULL,ci=0.95,estimation = "MC"
   #' @examples
   #' # Example 1
   #' 
-  #' N <- 200
+  #' N <- 100
   #' v <- seq(from = 0, to = 1, length.out = 10)
   #' sig <- 2
   #' set.seed(15)
   #' Y <- simulate_iid_brownian_bridge(N, v, sig)
-  #' FTS_identification(Y,v,15)
+  #' FTS_identification(Y,v,10)
   #' 
   #' \donttest{
   #' # Example 2

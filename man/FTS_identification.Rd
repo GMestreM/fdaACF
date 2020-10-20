@@ -73,12 +73,12 @@ of the dependence structure of the functional time series.
 \examples{
 # Example 1
 
-N <- 200
+N <- 100
 v <- seq(from = 0, to = 1, length.out = 10)
 sig <- 2
 set.seed(15)
 Y <- simulate_iid_brownian_bridge(N, v, sig)
-FTS_identification(Y,v,15)
+FTS_identification(Y,v,10)
 
 \donttest{
 # Example 2
