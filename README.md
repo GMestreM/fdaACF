@@ -163,6 +163,7 @@ FACF_iid <- obtain_FACF(Y = Y,
 As all the autocorrelation values fall below the i.i.d. bound, the i.i.d. hypothesis cannot be rejected.
 
 ### References
+
 Mestre G., Portela J., Rice G., Muñoz San Roque A., Alonso E. (2021). _Functional time series model identification and diagnosis by means of auto- and partial autocorrelation analysis._ Computational Statistics & Data Analysis, 155, 107108. [https://doi.org/10.1016/j.csda.2020.107108](https://doi.org/10.1016/j.csda.2020.107108)
 
 Mestre, G., Portela, J., Muñoz-San Roque, A., Alonso, E. (2020). _Forecasting hourly supply curves in the Italian Day-Ahead electricity market with a double-seasonal SARMAHX model._ International Journal of Electrical Power & Energy Systems, 121, 106083. [https://doi.org/10.1016/j.ijepes.2020.106083](https://doi.org/10.1016/j.ijepes.2020.106083)

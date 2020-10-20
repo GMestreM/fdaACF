@@ -476,7 +476,7 @@ FTS_identification <- function(Y,v,nlags,n_harm = NULL,ci=0.95,estimation = "MC"
   
   # Plot
   if(figure) {
-    op <- par(mfrow = c(1, 2))
+    op <- graphics::par(mfrow = c(1, 2))
     
     # Check if any additional plotting parameters are present
     arguments <- list(...)
@@ -513,7 +513,7 @@ FTS_identification <- function(Y,v,nlags,n_harm = NULL,ci=0.95,estimation = "MC"
       }
     }
     
-    par(op)
+    graphics::par(op)
   }
   
   
