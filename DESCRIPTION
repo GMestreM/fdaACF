@@ -17,7 +17,6 @@ Imports:
     CompQuadForm,
     pracma,
     fda,
-    Matrix,
     vars
 NeedsCompilation: no
 URL: https://github.com/GMestreM/fdaACF
