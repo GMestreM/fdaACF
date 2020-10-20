@@ -6,8 +6,9 @@ Date: 2020-08-09
 Author: Guillermo Mestre Marcos [aut, cre], José Portela González [aut], Gregory Rice [aut], Antonio Muñoz San Roque [ctb], Estrella Alonso Pérez [ctb] 
 Maintainer: Guillermo Mestre Marcos <guillermo.mestre@comillas.edu>
 Description: Quantify the serial correlation across lags of a given functional 
-    time series using an autocorrelation function and a partial autocorrelation
-    function for functional time series.
+    time series using the autocorrelation function and a partial autocorrelation
+    function for functional time series proposed in 
+    Mestre et al. (2021) <doi:10.1016/j.csda.2020.107108>.
     The autocorrelation functions are based on the L2 norm of the lagged covariance 
     operators of the series. Functions are available for estimating the 
     distribution of the autocorrelation functions under the assumption 
@@ -27,7 +28,8 @@ LazyData: true
 Depends: R (>= 3.5.0)
 Authors@R: c(
 	person(given = "Guillermo", family = "Mestre Marcos", 
-      email = "guillermo.mestre@comillas.edu", role = c("aut", "cre")),
+      email = "guillermo.mestre@comillas.edu", role = c("aut", "cre"),
+      comment = c(ORCID = "0000-0002-5082-3393")),
   person(given = "José", family = "Portela González", 
       email = "Jose.Portela@iit.comillas.edu", role = "aut"),
       person(given = "Gregory", family = "Rice", 

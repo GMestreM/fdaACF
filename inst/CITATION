@@ -1,0 +1,23 @@
+citHeader("To cite fdaACF in publications use:")
+
+citEntry(
+  entry    = "Article",
+  title    = "Functional time series model identification and diagnosis by means of auto- and partial autocorrelation analysis",
+  author   = personList(person(given="Guillermo", family="Mestre"),
+                        person(given="Jos\u00E9", family="Portela"),
+                        person(given="Gregory", family="Rice"),
+                        person(given="Antonio", family=c("Mu\u00F1oz", "San Roque")),
+                        person(given="Estrella", family="Alonso")),
+  journal  = "Computational Statistics \u0026 Data Analysis",
+  year     = "2021",
+  volume   = "155",
+  pages    = "107108",
+  url      = "https://doi.org/10.1016/j.csda.2020.107108",
+  textVersion = paste(
+        "Mestre G., Portela J., Rice G., Mu\u00F1oz San Roque A. and Alonso E. (2021).",
+        "Functional time series model identification and diagnosis ",
+        "by means of auto- and partial autocorrelation analysis.",
+        "Computational Statistics \u0026 Data Analysis, 155, 107108.", 
+        "https://doi.org/10.1016/j.csda.2020.107108"
+  )
+)
