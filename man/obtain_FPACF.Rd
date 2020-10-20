@@ -90,5 +90,5 @@ Mestre G., Portela J., Rice G., Muñoz San Roque A., Alonso E. (2021).
 \emph{Functional time series model identification and diagnosis by 
 means of auto- and partial autocorrelation analysis.}
 Computational Statistics & Data Analysis, 155, 107108.
-\url{https://www.sciencedirect.com/science/article/pii/S0167947320301997}
+\url{https://doi.org/10.1016/j.csda.2020.107108}
 }

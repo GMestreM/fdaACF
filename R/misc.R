@@ -266,7 +266,7 @@ fit_ARHp_FPCA <- function(y, v, p, n_harm, show_varprop = T){
   #' \emph{On the Prediction of Stationary Functional 
   #' Time Series}
   #' Journal of the American Statistical Association, 
-  #' 110, 378--392. \url{https://www.tandfonline.com/doi/full/10.1080/01621459.2014.909317}
+  #' 110, 378--392. \url{https://doi.org/10.1080/01621459.2014.909317}
   #' @export fit_ARHp_FPCA
   dt <- nrow(y)
   dv <- length(v)

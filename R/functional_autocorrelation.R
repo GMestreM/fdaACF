@@ -49,19 +49,19 @@ obtain_FACF <- function(Y,v,nlags,ci=0.95,estimation = "MC",figure = TRUE,...){
   #' \emph{Functional time series model identification and diagnosis by 
   #' means of auto- and partial autocorrelation analysis.}
   #' Computational Statistics & Data Analysis, 155, 107108.
-  #' \url{https://www.sciencedirect.com/science/article/pii/S0167947320301997}
+  #' \url{https://doi.org/10.1016/j.csda.2020.107108}
   #' 
   #' Mestre, G., Portela, J., Muñoz-San Roque, A., Alonso, E. (2020).
   #' \emph{Forecasting hourly supply curves in the Italian Day-Ahead 
   #' electricity market with a double-seasonal SARMAHX model.}
   #' International Journal of Electrical Power & Energy Systems, 
-  #' 121, 106083. \url{https://www.sciencedirect.com/science/article/pii/S0142061519337135}
+  #' 121, 106083. \url{https://doi.org/10.1016/j.ijepes.2020.106083}
   #' 
   #' Kokoszka, P., Rice, G., Shang, H.L. (2017).
   #' \emph{Inference for the autocovariance of a functional
   #'  time series under conditional heteroscedasticity}
   #' Journal of Multivariate Analysis, 
-  #' 162, 32--50. \url{https://www.sciencedirect.com/science/article/pii/S0142061519337135}
+  #' 162, 32--50. \url{https://doi.org/10.1016/j.jmva.2017.08.004}
   #' 
   #' @examples
   #' # Example 1
@@ -175,7 +175,7 @@ obtain_FPACF <- function(Y,v,nlags,n_harm,ci=0.95,estimation = "MC",figure = TRU
   #' \emph{Functional time series model identification and diagnosis by 
   #' means of auto- and partial autocorrelation analysis.}
   #' Computational Statistics & Data Analysis, 155, 107108.
-  #' \url{https://www.sciencedirect.com/science/article/pii/S0167947320301997}
+  #' \url{https://doi.org/10.1016/j.csda.2020.107108}
   #' 
   #' @examples
   #' # Example 1
@@ -405,19 +405,19 @@ FTS_identification <- function(Y,v,nlags,n_harm = NULL,ci=0.95,estimation = "MC"
   #' \emph{Functional time series model identification and diagnosis by 
   #' means of auto- and partial autocorrelation analysis.}
   #' Computational Statistics & Data Analysis, 155, 107108.
-  #' \url{https://www.sciencedirect.com/science/article/pii/S0167947320301997}
+  #' \url{https://doi.org/10.1016/j.csda.2020.107108}
   #' 
   #' Mestre, G., Portela, J., Muñoz-San Roque, A., Alonso, E. (2020).
   #' \emph{Forecasting hourly supply curves in the Italian Day-Ahead 
   #' electricity market with a double-seasonal SARMAHX model.}
   #' International Journal of Electrical Power & Energy Systems, 
-  #' 121, 106083. \url{https://www.sciencedirect.com/science/article/pii/S0142061519337135}
+  #' 121, 106083. \url{https://doi.org/10.1016/j.ijepes.2020.106083}
   #' 
   #' Kokoszka, P., Rice, G., Shang, H.L. (2017).
   #' \emph{Inference for the autocovariance of a functional
   #'  time series under conditional heteroscedasticity}
   #' Journal of Multivariate Analysis, 
-  #' 162, 32--50. \url{https://www.sciencedirect.com/science/article/pii/S0142061519337135}
+  #' 162, 32--50. \url{https://doi.org/10.1016/j.jmva.2017.08.004}
   #' 
   #' @examples
   #' # Example 1

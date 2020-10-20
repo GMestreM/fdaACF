@@ -85,5 +85,5 @@ Aue, A., Norinho, D. D., Hormann, S. (2015).
 \emph{On the Prediction of Stationary Functional 
 Time Series}
 Journal of the American Statistical Association, 
-110, 378--392. \url{https://www.tandfonline.com/doi/full/10.1080/01621459.2014.909317}
+110, 378--392. \url{https://doi.org/10.1080/01621459.2014.909317}
 }

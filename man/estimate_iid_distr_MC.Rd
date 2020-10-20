@@ -4,15 +4,8 @@
 \alias{estimate_iid_distr_MC}
 \title{Estimate distribution of the fACF under the iid. hypothesis using MC method}
 \usage{
-estimate_iid_distr_MC(
-  Y,
-  v,
-  autocovSurface,
-  matindex,
-  nsimul = 10000,
-  figure = FALSE,
-  ...
-)
+estimate_iid_distr_MC(Y, v, autocovSurface, matindex, nsimul = 10000,
+  figure = FALSE, ...)
 }
 \arguments{
 \item{Y}{Matrix containing the discretized values
