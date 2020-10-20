@@ -180,11 +180,12 @@ obtain_FPACF <- function(Y,v,nlags,n_harm,ci=0.95,estimation = "MC",figure = TRU
   #' @examples
   #' # Example 1
   #' 
-  #' N <- 100
+  #' N <- 200
   #' v <- seq(from = 0, to = 1, length.out = 5)
   #' sig <- 2
+  #' set.seed(15)
   #' Y <- simulate_iid_brownian_bridge(N, v, sig)
-  #' obtain_FPACF(Y,v,20, n_harm = 2)
+  #' obtain_FPACF(Y,v,15, n_harm = 2)
   #' 
   #' \donttest{
   #' # Example 2
@@ -219,12 +220,20 @@ obtain_FPACF <- function(Y,v,nlags,n_harm,ci=0.95,estimation = "MC",figure = TRU
   
   vector_PACF <- FPACF
   
+  show_varprop = T
+  
   # Start loop for fitting ARH(p-1)
   for(pp in 2:nlags){
     lag_PACF <- pp
     
     # 1 - Fit ARH(1) to the series
-    Yest_ARIMA <- fit_ARHp_FPCA(y = y, v = v, p = lag_PACF-1, n_harm = n_harm)$y_est
+    if(show_varprop){
+      Yest_ARIMA <- fit_ARHp_FPCA(y = y, v = v, p = lag_PACF-1, n_harm = n_harm)$y_est
+      show_varprop = F
+    }else{
+      Yest_ARIMA <- fit_ARHp_FPCA(y = y, v = v, p = lag_PACF-1, n_harm = n_harm, show_varprop = F)$y_est
+    }
+    
     if(F){
       kkk <- 30
       graphics::plot(v,y[kkk,],type = "b")
@@ -236,7 +245,7 @@ obtain_FPACF <- function(Y,v,nlags,n_harm,ci=0.95,estimation = "MC",figure = TRU
     
     # y_rev[1,] == y[dt,]
     
-    Yest_ARIMA_REV <- fit_ARHp_FPCA(y = y_rev, v = v, p = lag_PACF-1, n_harm = n_harm)$y_est
+    Yest_ARIMA_REV <- fit_ARHp_FPCA(y = y_rev, v = v, p = lag_PACF-1, n_harm = n_harm, show_varprop = F)$y_est
     
     # 3 - Estimate covariance surface for PACF 
     Yest_1 <- Yest_ARIMA;
@@ -335,7 +344,186 @@ obtain_FPACF <- function(Y,v,nlags,n_harm,ci=0.95,estimation = "MC",figure = TRU
   return(output)
 }
 
-
+FTS_identification <- function(Y,v,nlags,n_harm = NULL,ci=0.95,estimation = "MC",figure = TRUE,...){
+  
+  #' Obtain the auto- and partial autocorrelation functions for a given FTS
+  #' 
+  #' @description Estimate both the autocorrelation and partial 
+  #' autocorrelation function for a given functional time series 
+  #' and its distribution under the hypothesis of strong functional
+  #' white noise. Both correlograms are plotted to ease the identification
+  #' of the dependence structure of the functional time series.
+  #' 
+  #' @param Y Matrix containing the discretized values
+  #' of the functional time series. The dimension of the
+  #' matrix is \eqn{(n x m)}, where \eqn{n} is the
+  #' number of curves and \eqn{m} is the number of points
+  #' observed in each curve.
+  #' @param v Discretization points of the curves.
+  #' @param nlags Number of lagged covariance operators
+  #' of the functional time series that will be used
+  #' to estimate the autocorrelation functions.
+  #' @param n_harm Number of principal components
+  #' that will be used to fit the ARH(p) models. If
+  #' this value is not supplied, \code{n_harm} will be
+  #' selected as the number of principal components that
+  #' explain more than 95 \% of the variance of the
+  #' original data.
+  #' By default, \code{n_harm = NULL}.
+  #' @param ci A value between 0 and 1 that indicates
+  #' the confidence interval for the i.i.d. bounds
+  #' of the partial autocorrelation function. By default
+  #' \code{ci = 0.95}.
+  #' @param estimation Character specifying the
+  #' method to be used when estimating the distribution
+  #' under the hypothesis of functional white noise.
+  #' Accepted values are:
+  #' \itemize{
+  #'    \item "MC": Monte-Carlo estimation.
+  #'    \item "Imhof": Estimation using Imhof's method.
+  #' }
+  #' By default, \code{estimation = "MC"}.
+  #' @param figure Logical. If \code{TRUE}, plots the
+  #' estimated partial autocorrelation function with the
+  #' specified i.i.d. bound.
+  #' @param ... Further arguments passed to the \code{plot_FACF}
+  #' function.
+  #' @return Return a list with:
+  #' \itemize{
+  #'     \item \code{Blueline}: The upper prediction
+  #'     bound for the i.i.d. distribution.
+  #'     \item \code{rho_FACF}: Autocorrelation
+  #'     coefficients for
+  #'     each lag of the functional time series.
+  #'     \item \code{rho_FPACF}: Partial autocorrelation
+  #'     coefficients for
+  #'     each lag of the functional time series.
+  #' }
+  #' 
+  #' @references
+  #' Mestre G., Portela J., Rice G., Muñoz San Roque A., Alonso E. (2021).
+  #' \emph{Functional time series model identification and diagnosis by 
+  #' means of auto- and partial autocorrelation analysis.}
+  #' Computational Statistics & Data Analysis, 155, 107108.
+  #' \url{https://www.sciencedirect.com/science/article/pii/S0167947320301997}
+  #' 
+  #' Mestre, G., Portela, J., Muñoz-San Roque, A., Alonso, E. (2020).
+  #' \emph{Forecasting hourly supply curves in the Italian Day-Ahead 
+  #' electricity market with a double-seasonal SARMAHX model.}
+  #' International Journal of Electrical Power & Energy Systems, 
+  #' 121, 106083. \url{https://www.sciencedirect.com/science/article/pii/S0142061519337135}
+  #' 
+  #' Kokoszka, P., Rice, G., Shang, H.L. (2017).
+  #' \emph{Inference for the autocovariance of a functional
+  #'  time series under conditional heteroscedasticity}
+  #' Journal of Multivariate Analysis, 
+  #' 162, 32--50. \url{https://www.sciencedirect.com/science/article/pii/S0142061519337135}
+  #' 
+  #' @examples
+  #' # Example 1
+  #' 
+  #' N <- 200
+  #' v <- seq(from = 0, to = 1, length.out = 10)
+  #' sig <- 2
+  #' set.seed(15)
+  #' Y <- simulate_iid_brownian_bridge(N, v, sig)
+  #' FTS_identification(Y,v,15)
+  #' 
+  #' \donttest{
+  #' # Example 2
+  #' 
+  #' data(elec_prices)
+  #' v <- seq(from = 1, to = 24)
+  #' nlags <- 30
+  #' FTS_identification(Y = as.matrix(elec_prices), 
+  #' v = v,
+  #' nlags = nlags,
+  #' ci = 0.95,
+  #' figure = TRUE)
+  #' }
+  #' @export FTS_identification
+  
+  
+  # Estimate FACF
+  FACF <- obtain_FACF(Y = Y,v = v, nlags = nlags,ci = ci, estimation = estimation, figure = F)
+    
+  # If the number of FPC is not supplied by the user,
+  # select the number of FPC that explain more than 95% 
+  # of the variance
+  if(is.null(n_harm)){
+    num_fpc <- 10
+    y_fd <- mat2fd(mat_obj = Y,argvals = v, range_val = range(v))
+    pca <- fda::pca.fd(fdobj = y_fd, nharm = num_fpc)
+    
+    varprop <- cumsum(pca$varprop)
+    n_harm <- which(varprop>=0.95)[1]
+    
+    if(F){
+      graphics::plot(1:num_fpc,cumsum(pca$varprop),
+                     type = "b",
+                     pch = 20,
+                     main = "% Variance explained by FPCA",
+                     xlab = "n of components",
+                     ylab = "% Var. Expl")
+    }
+  }
+  
+  # Estimate FPACF
+  FPACF <- obtain_FPACF(Y = Y,v = v,n_harm = n_harm, nlags = nlags,ci = ci, estimation = estimation, figure = F)
+  
+  # Blueline
+  Blueline <- max(FACF$Blueline,FPACF$Blueline)
+  
+  # Plot
+  if(figure) {
+    op <- par(mfrow = c(1, 2))
+    
+    # Check if any additional plotting parameters are present
+    arguments <- list(...)
+    
+    # Set same ylim
+    if (!"ylim" %in% names(arguments)) {
+      ylim_plot <- c(0, max(FACF$rho,FPACF$rho) * 1.5)
+      if (!"main" %in% names(arguments)) {
+        # If user did not specify "main", use "FACF" and "FPACF"
+        plot_FACF(FACF$rho,
+                  Blueline,
+                  ci,
+                  main = "FACF",
+                  ylim = ylim_plot,
+                  ...)
+        plot_FACF(FPACF$rho,
+                  Blueline,
+                  ci,
+                  main = "FPACF",
+                  ylim = ylim_plot,
+                  ...)
+      } else{
+        plot_FACF(FACF$rho, Blueline, ci, ylim = ylim_plot, ...)
+        plot_FACF(FPACF$rho, Blueline, ci, ylim = ylim_plot, ...)
+      }
+    } else{
+      if (!"main" %in% names(arguments)) {
+        # If user did not specify "main", use "FACF" and "FPACF"
+        plot_FACF(FACF$rho, Blueline, ci, main = "FACF", ...)
+        plot_FACF(FPACF$rho, Blueline, ci, main = "FPACF", ...)
+      } else{
+        plot_FACF(FACF$rho, Blueline, ci, ...)
+        plot_FACF(FPACF$rho, Blueline, ci, ...)
+      }
+    }
+    
+    par(op)
+  }
+  
+  
+  
+  # Prepare output
+  output <- list(Blueline = Blueline,
+                 rho_FACF = FACF$rho,
+                 rho_FPACF = FPACF$rho)
+  return(output)
+}
 
 obtain_autocovariance <- function(Y,nlags){
 

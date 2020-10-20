@@ -280,7 +280,7 @@ fit_ARHp_FPCA <- function(y, v, p, n_harm, show_varprop = T){
                    type = "b",
                    pch = 20,
                    main = "% Variance explained by FPCA",
-                   xlab = "n of components",
+                   xlab = "Number of components",
                    ylab = "% Var. Expl")
   }
   
