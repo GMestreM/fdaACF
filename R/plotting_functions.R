@@ -122,6 +122,8 @@ plot_FACF <- function(rho,Blueline,ci,...){
   if(!"ylab" %in% names(arguments))  arguments$ylab <- "Autocorrelation"
   if(!"ylim" %in% names(arguments))  arguments$ylim <- c(0,max(rho)*1.5)
   if(!"lwd"  %in% names(arguments))   arguments$lwd  <- 2
+  if(!"lend" %in% names(arguments))   arguments$lend  <- 1
+  if(!"yaxs" %in% names(arguments))   arguments$yaxs  <- "i"
   if(!"main" %in% names(arguments))  arguments$main  <- ""
   if(!"xlim" %in% names(arguments))  arguments$xlim  <- c(0,length(rho))
   arguments$x = seq(1,length(rho),by = 1)
@@ -129,10 +131,11 @@ plot_FACF <- function(rho,Blueline,ci,...){
   arguments$type = "h"
   
   do.call(graphics::plot,arguments)
-  graphics::abline(h = Blueline,col = "blue",lwd = 2, lty = 2)
+  blue_color <- "#0073C2FF"
+  graphics::abline(h = Blueline,col = blue_color,lwd = 2, lty = 2)
   graphics::legend(x = "topleft",
                    legend = c(paste("i.i.d. bound (",ci*100," % conf.)",sep="")),
-                   col = "blue",
+                   col = blue_color,
                    lty = 2,
                    lwd = 2)
 }
