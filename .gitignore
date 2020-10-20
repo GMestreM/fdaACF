@@ -1,3 +1,6 @@
+# Auxiliary files
+README-files/*.txt
+
 # History files
 .Rhistory
 .Rapp.history
