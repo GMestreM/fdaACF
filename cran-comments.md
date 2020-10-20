@@ -2,15 +2,15 @@
 
 ## Test environments
 * Windows 10 Home x64, R 3.6.1
-* ubuntu 14.05.5 (on travis-ci), R (oldrel, release and devel)
-* Mac OS X 10.13.3 (on travis-ci), R (oldrel and release)
+* ubuntu 16.04.6 (on travis-ci), R (oldrel, release and devel)
+* Mac OS X 10.13.6 (on travis-ci), R (oldrel and release)
 * win-builder, R (oldrelease, release and devel)
 * macOS Mojave 10.14.6, R 3.5.1
 
 ### R CMD check
 
 ── R CMD check results ─── fdaACF 1.0.0 ────
-Duration: 27.9s
+Duration: 19.8s
 
 0 errors v | 0 warnings v | 0 notes v
 
