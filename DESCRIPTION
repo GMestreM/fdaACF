@@ -28,8 +28,7 @@ LazyData: true
 Depends: R (>= 3.5.0)
 Authors@R: c(
 	person(given = "Guillermo", family = "Mestre Marcos", 
-      email = "guillermo.mestre@comillas.edu", role = c("aut", "cre"),
-      comment = c(ORCID = "0000-0002-5082-3393")),
+      email = "guillermo.mestre@comillas.edu", role = c("aut", "cre")),
   person(given = "José", family = "Portela González", 
       email = "Jose.Portela@iit.comillas.edu", role = "aut"),
       person(given = "Gregory", family = "Rice", 
