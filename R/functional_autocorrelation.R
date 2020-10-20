@@ -420,14 +420,14 @@ FTS_identification <- function(Y,v,nlags,n_harm = NULL,ci=0.95,estimation = "MC"
   #' 162, 32--50. \url{https://doi.org/10.1016/j.jmva.2017.08.004}
   #' 
   #' @examples
-  #' # Example 1
+  #' # Example 1 (Toy example)
   #' 
-  #' N <- 100
+  #' N <- 50
   #' v <- seq(from = 0, to = 1, length.out = 10)
   #' sig <- 2
   #' set.seed(15)
   #' Y <- simulate_iid_brownian_bridge(N, v, sig)
-  #' FTS_identification(Y,v,10)
+  #' FTS_identification(Y,v,3)
   #' 
   #' \donttest{
   #' # Example 2
