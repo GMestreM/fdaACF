@@ -115,7 +115,7 @@ The functional ACF and PACF are based on the L2 norm of the covariance functions
 N <- 400
 v <- seq(from = 0, to = 1, length.out = 24)
 sig <- 1
-set.seed(10) # For replication
+set.seed(3) # For replication
 Y <- simulate_iid_brownian_bridge(N, v, sig)
 matplot(t(Y), type = "l",lty = 1,xlab = "v", ylab = "", main = "Functional Brownian Bridge")
 ```
