@@ -84,3 +84,10 @@ ci = 0.95,
 figure = TRUE)
 }
 }
+\references{
+Mestre G., Portela J., Rice G., Muñoz San Roque A., Alonso E. (2021).
+\emph{Functional time series model identification and diagnosis by 
+means of auto- and partial autocorrelation analysis.}
+Computational Statistics & Data Analysis, 155, 107108.
+\url{https://www.sciencedirect.com/science/article/pii/S0167947320301997}
+}

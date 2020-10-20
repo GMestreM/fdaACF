@@ -45,11 +45,17 @@ obtain_FACF <- function(Y,v,nlags,ci=0.95,estimation = "MC",figure = TRUE,...){
   #'     each lag of the functional time series.
   #' }
   #' @references
+  #' Mestre G., Portela J., Rice G., Muñoz San Roque A., Alonso E. (2021).
+  #' \emph{Functional time series model identification and diagnosis by 
+  #' means of auto- and partial autocorrelation analysis.}
+  #' Computational Statistics & Data Analysis, 155, 107108.
+  #' \url{https://www.sciencedirect.com/science/article/pii/S0167947320301997}
+  #' 
   #' Mestre, G., Portela, J., Muñoz-San Roque, A., Alonso, E. (2020).
   #' \emph{Forecasting hourly supply curves in the Italian Day-Ahead 
   #' electricity market with a double-seasonal SARMAHX model.}
   #' International Journal of Electrical Power & Energy Systems, 
-  #' 121, 1--13. \url{https://www.sciencedirect.com/science/article/pii/S0142061519337135}
+  #' 121, 106083. \url{https://www.sciencedirect.com/science/article/pii/S0142061519337135}
   #' 
   #' Kokoszka, P., Rice, G., Shang, H.L. (2017).
   #' \emph{Inference for the autocovariance of a functional
@@ -164,6 +170,12 @@ obtain_FPACF <- function(Y,v,nlags,n_harm,ci=0.95,estimation = "MC",figure = TRU
   #'     each lag of the functional time series.
   #' }
   #' 
+  #' @references
+  #' Mestre G., Portela J., Rice G., Muñoz San Roque A., Alonso E. (2021).
+  #' \emph{Functional time series model identification and diagnosis by 
+  #' means of auto- and partial autocorrelation analysis.}
+  #' Computational Statistics & Data Analysis, 155, 107108.
+  #' \url{https://www.sciencedirect.com/science/article/pii/S0167947320301997}
   #' 
   #' @examples
   #' # Example 1

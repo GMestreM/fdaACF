@@ -15,7 +15,7 @@ citEntry(
   url      = "https://doi.org/10.1016/j.csda.2020.107108",
   textVersion = paste(
         "Mestre G., Portela J., Rice G., Mu\u00F1oz San Roque A. and Alonso E. (2021).",
-        "Functional time series model identification and diagnosis ",
+        "Functional time series model identification and diagnosis",
         "by means of auto- and partial autocorrelation analysis.",
         "Computational Statistics \u0026 Data Analysis, 155, 107108.", 
         "https://doi.org/10.1016/j.csda.2020.107108"
