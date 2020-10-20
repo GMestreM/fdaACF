@@ -97,6 +97,15 @@ par(mfrow = c(1,1))
 
 The shape of the functional ACF indicates the presence of a daily seasonal effect in the data, as well as the presence of serial correlation.
 
+Function `FTS_identification` estimates both the FACF and the FPACF of a given functional time series, providing an user-friendly way of quantifying the dependence structure of a functional dataset.
+
+```r
+FunAutCorr <- FTS_identification(Y = as.matrix(elec_prices), 
+                                 v = v,
+                                 nlags = nlags,
+                                 ci = ci,
+                                 figure = TRUE)
+```
 
 The functional ACF and PACF are based on the L2 norm of the covariance functions of the data, which can be estimated with function `obtain_autocovariance` and plotted with function `plot_autocovariance`. In order to test the i.i.d. hypothesis, a functional white noise series will be simulated with function `simulate_iid_brownian_bridge`.
 
@@ -106,6 +115,7 @@ The functional ACF and PACF are based on the L2 norm of the covariance functions
 N <- 400
 v <- seq(from = 0, to = 1, length.out = 24)
 sig <- 1
+set.seed(10) # For replication
 Y <- simulate_iid_brownian_bridge(N, v, sig)
 matplot(t(Y), type = "l",lty = 1,xlab = "v", ylab = "", main = "Functional Brownian Bridge")
 ```
