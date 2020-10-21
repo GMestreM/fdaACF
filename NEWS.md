@@ -1,3 +1,10 @@
+# fdaACF 1.0.1
+
+Fix minor bugs:
+
+* Fix the automatic selection of variable `n_harm` in function `FTS_identification`. The previous version obtained the first 10 principal components of the functional time series and looked for the number of components neccesary to explain more than 95 % of the variance of the data. This approach presents several drawbacks: perhaps more than 10 PC are neccesary to explain more than 95% of the variance, or the series could have less than 10 discretization points.
+The updated version of function `FTS_identification` now uses the length of the input variable `v` to decide the number of PC to try and gives a warning message if 95 % of the variance cannot be explained by the maximum number of PC tried.
+
 # fdaACF 1.0.0
 
 New functionalities added in this release:

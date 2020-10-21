@@ -451,12 +451,31 @@ FTS_identification <- function(Y,v,nlags,n_harm = NULL,ci=0.95,estimation = "MC"
   # select the number of FPC that explain more than 95% 
   # of the variance
   if(is.null(n_harm)){
-    num_fpc <- 10
+    max_number_pc <- 20 # This variable defines the maximum number of FPC that will be estimated
+    
+    # If there are less discretization points than max_number_pc, use the disc points
+    num_fpc <- min(c(length(v),max_number_pc))
+    
+    
     y_fd <- mat2fd(mat_obj = Y,argvals = v, range_val = range(v))
     pca <- fda::pca.fd(fdobj = y_fd, nharm = num_fpc)
     
     varprop <- cumsum(pca$varprop)
-    n_harm <- which(varprop>=0.95)[1]
+    
+    # If the number of FPC obtained are not enough to explain
+    # more than 95 %, give a warning to the user
+    
+    if(any(varprop>=0.95)){
+      n_harm <- which(varprop>=0.95)[1]
+    }else{
+      warning(paste0("Using ",
+                     num_fpc,
+                     " functional principal components only explains ",
+                     format(varprop[length(varprop)],digits = 3),"%",
+                     " of the variance"))
+      n_harm <- num_fpc
+    }
+    
     
     if(F){
       graphics::plot(1:num_fpc,cumsum(pca$varprop),
