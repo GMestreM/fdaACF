@@ -37,7 +37,7 @@ Authors@R: c(
 	person(given = "Estrella", family = "Alonso Pérez", 
       email = "ealonso@icai.comillas.edu", role = "ctb")
     )
-RoxygenNote: 7.0.1
+RoxygenNote: 7.1.1
 Suggests: 
     testthat,
     fields

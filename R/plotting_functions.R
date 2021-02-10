@@ -116,26 +116,50 @@ plot_FACF <- function(rho,Blueline,ci,...){
   #' plot_FACF(rho = fACF$rho,Blueline = fACF$Blueline,ci = upper_bound)
   #' }
   #' @export plot_FACF
+  
+  # Define suitable lwd for plotting
+  nlags <- length(rho)
+  if(nlags <= 30){
+    lwd_1 <- 8
+  }else if(nlags <= 50){
+    lwd_1 <- 6
+  }else if(nlags <= 150){
+    lwd_1 <- 4
+  }else{
+    lwd_1 <- 3
+  }
+  
   # Check if any additional plotting parameters are present
   arguments <- list(...)
   if(!"xlab" %in% names(arguments))  arguments$xlab <- "Lag"
   if(!"ylab" %in% names(arguments))  arguments$ylab <- "Autocorrelation"
   if(!"ylim" %in% names(arguments))  arguments$ylim <- c(0,max(rho)*1.5)
-  if(!"lwd"  %in% names(arguments))   arguments$lwd  <- 2
-  if(!"lend" %in% names(arguments))   arguments$lend  <- 1
+  if(!"lwd"  %in% names(arguments))   arguments$lwd  <- lwd_1
+  if(!"las"  %in% names(arguments))   arguments$las  <- 1
+  if(!"lend" %in% names(arguments))   arguments$lend  <- 2
   if(!"yaxs" %in% names(arguments))   arguments$yaxs  <- "i"
+  if(!"xaxs" %in% names(arguments))   arguments$xaxs  <- "i"
   if(!"main" %in% names(arguments))  arguments$main  <- ""
-  if(!"xlim" %in% names(arguments))  arguments$xlim  <- c(0,length(rho))
+  if(!"xlim" %in% names(arguments))  arguments$xlim  <- c(0,length(rho)+1)
   arguments$x = seq(1,length(rho),by = 1)
   arguments$y = rho
   arguments$type = "h"
   
   do.call(graphics::plot,arguments)
+  grid(lty = 1)
+  do.call(graphics::lines,arguments)
+  graphics::lines(x = arguments$x, 
+                  y = arguments$y,
+                  type = arguments$type, 
+                  col = "lightgrey", 
+                  lwd = arguments$lwd-2, 
+                  lend = 2);
   blue_color <- "#0073C2FF"
-  graphics::abline(h = Blueline,col = blue_color,lwd = 2, lty = 2)
+  graphics::abline(h = Blueline,col = blue_color,lwd = 4, lty = 2)
   graphics::legend(x = "topleft",
                    legend = c(paste("i.i.d. bound (",ci*100," % conf.)",sep="")),
                    col = blue_color,
                    lty = 2,
-                   lwd = 2)
+                   lwd = 4)
+  box()
 }
